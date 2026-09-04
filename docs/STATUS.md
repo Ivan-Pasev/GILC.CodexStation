@@ -1,7 +1,5 @@
-# Ω101 Status
+# Ω101 alpha3 status
 
-This repository is an implementation bootstrap, not a global Ω101 PASS declaration.
+Executable slices now cover deterministic genesis identity, dual roots, typed/provenance memory admission, self/world epistemic typing, KBI invariant evaluation, one-lineage MLCO reconciliation, authority gating, witnessed simulated effect receipts, homeostasis reporting, and checkpoint migration verification.
 
-Current executable bootstrap coverage targets deterministic genesis identity, station/entity root separation, typed provenance-bound memory admission, authority separation, and homeostasis state reporting.
-
-All G101 gate promotions require explicit machine-readable evidence.
+This remains development evidence, not a global G101 PASS. G101-13 remains blocked on Ω100 predecessor reconstruction.

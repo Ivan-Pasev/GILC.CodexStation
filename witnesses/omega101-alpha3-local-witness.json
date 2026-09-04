@@ -1,0 +1,8 @@
+{
+  "schema": "GILC/CODEXSTATION/OMEGA101-ALPHA3-WITNESS/1.0",
+  "implementation_version": "101.0.0a3",
+  "run_date": "2026-09-04",
+  "result": "PASS",
+  "test_count": 13,
+  "non_claim": "Local deterministic test witness only; does not certify complete Omega101 or G101-13."
+}

@@ -1,22 +1,20 @@
 [build-system]
-requires = ["setuptools>=75", "wheel"]
-build-backend = "setuptools.build_meta"
+requires=["setuptools>=75","wheel"]
+build-backend="setuptools.build_meta"
 
 [project]
-name = "gilc-codex-station"
-version = "101.0.0a2"
-description = "Reference implementation for CodexStation Omega101 Cognitive Runtime Genesis"
-requires-python = ">=3.11"
-license = {text = "Apache-2.0"}
-dependencies = []
+name="gilc-codex-station"
+version="101.0.0a3"
+requires-python=">=3.11"
+dependencies=[]
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0"]
+dev=["pytest>=8.0"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
-addopts = "-q"
-pythonpath = ["src"]
+testpaths=["tests"]
+addopts="-q"
+pythonpath=["src"]
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where=["src"]
