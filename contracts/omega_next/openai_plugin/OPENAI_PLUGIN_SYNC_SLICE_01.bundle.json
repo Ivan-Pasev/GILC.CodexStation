@@ -1,0 +1,669 @@
+{
+  "schema": "GILC/CODEXSTATION/OMEGA-NEXT/OPENAI-PLUGIN-SYNC-BUNDLE/0.1",
+  "version": "0.1",
+  "authority": "WORKING_IMPLEMENTATION_SPEC",
+  "schemas": {
+    "PluginSkillBinding.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/PluginSkillBinding.schema.json",
+      "title": "PluginSkillBinding",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "omega_next_skill_uri",
+        "plugin_skill",
+        "binding_class",
+        "status",
+        "authority_ceiling",
+        "capability_claim",
+        "source_refs"
+      ],
+      "properties": {
+        "omega_next_skill_uri": {
+          "type": "string",
+          "pattern": "^cs://skill/.+@[A-Za-z0-9_.-]+$"
+        },
+        "plugin_skill": {
+          "type": "string",
+          "minLength": 1
+        },
+        "binding_class": {
+          "type": "string",
+          "enum": [
+            "DIRECT",
+            "ADAPTER",
+            "COMPOSITE",
+            "PLANNED_EXTENSION"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "OBSERVED_INSTALLED",
+            "PREPARED_NOT_DEPLOYED",
+            "DEFERRED"
+          ]
+        },
+        "authority_ceiling": {
+          "type": "string",
+          "enum": [
+            "METHOD",
+            "EXECUTION",
+            "CANONICAL",
+            "NONE"
+          ]
+        },
+        "capability_claim": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "DECLARED_ONLY",
+            "OBSERVED_PLUGIN_SKILL"
+          ]
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "PluginRuntimeGateReceipt.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/PluginRuntimeGateReceipt.schema.json",
+      "title": "PluginRuntimeGateReceipt",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_id",
+        "plugin_id",
+        "plugin_version",
+        "release_id",
+        "surface",
+        "vectors",
+        "mutation_status",
+        "scientific_authority_delta",
+        "evidence_refs"
+      ],
+      "properties": {
+        "receipt_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "plugin_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "plugin_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "release_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "surface": {
+          "type": "string",
+          "enum": [
+            "CHAT_PROJECT",
+            "CHAT_CLEAN",
+            "WORK",
+            "OTHER"
+          ]
+        },
+        "vectors": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "status",
+              "required_surface"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^RGT-[0-9A-Z-]+$"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "PASS",
+                  "FAIL",
+                  "OPEN",
+                  "BLOCKED",
+                  "NOT_RUN"
+                ]
+              },
+              "required_surface": {
+                "type": "string",
+                "minLength": 1
+              },
+              "detail": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "mutation_status": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "MUTATED"
+          ]
+        },
+        "scientific_authority_delta": {
+          "type": "string",
+          "const": "NONE"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "OpenAIPluginSyncManifest.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/OpenAIPluginSyncManifest.schema.json",
+      "title": "OpenAIPluginSyncManifest",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "version",
+        "omega_next_root_id",
+        "root_semantic_fingerprint",
+        "plugin_baseline",
+        "observed_plugin_skills",
+        "skill_bindings",
+        "runtime_gate_receipt",
+        "planned_extension",
+        "deployment_state",
+        "deployment_blockers",
+        "authority_delta",
+        "next_gate"
+      ],
+      "properties": {
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "omega_next_root_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "root_semantic_fingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "plugin_baseline": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "plugin_id",
+            "name",
+            "version",
+            "release_id",
+            "scope"
+          ],
+          "properties": {
+            "plugin_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:/-]+$"
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "release_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:/-]+$"
+            },
+            "scope": {
+              "type": "string",
+              "enum": [
+                "USER",
+                "WORKSPACE"
+              ]
+            }
+          }
+        },
+        "observed_plugin_skills": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "skill_bindings": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/PluginSkillBinding.schema.json",
+            "title": "PluginSkillBinding",
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "omega_next_skill_uri",
+              "plugin_skill",
+              "binding_class",
+              "status",
+              "authority_ceiling",
+              "capability_claim",
+              "source_refs"
+            ],
+            "properties": {
+              "omega_next_skill_uri": {
+                "type": "string",
+                "pattern": "^cs://skill/.+@[A-Za-z0-9_.-]+$"
+              },
+              "plugin_skill": {
+                "type": "string",
+                "minLength": 1
+              },
+              "binding_class": {
+                "type": "string",
+                "enum": [
+                  "DIRECT",
+                  "ADAPTER",
+                  "COMPOSITE",
+                  "PLANNED_EXTENSION"
+                ]
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "OBSERVED_INSTALLED",
+                  "PREPARED_NOT_DEPLOYED",
+                  "DEFERRED"
+                ]
+              },
+              "authority_ceiling": {
+                "type": "string",
+                "enum": [
+                  "METHOD",
+                  "EXECUTION",
+                  "CANONICAL",
+                  "NONE"
+                ]
+              },
+              "capability_claim": {
+                "type": "string",
+                "enum": [
+                  "NONE",
+                  "DECLARED_ONLY",
+                  "OBSERVED_PLUGIN_SKILL"
+                ]
+              },
+              "source_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              }
+            }
+          }
+        },
+        "runtime_gate_receipt": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/PluginRuntimeGateReceipt.schema.json",
+          "title": "PluginRuntimeGateReceipt",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "receipt_id",
+            "plugin_id",
+            "plugin_version",
+            "release_id",
+            "surface",
+            "vectors",
+            "mutation_status",
+            "scientific_authority_delta",
+            "evidence_refs"
+          ],
+          "properties": {
+            "receipt_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:/-]+$"
+            },
+            "plugin_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:/-]+$"
+            },
+            "plugin_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "release_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:/-]+$"
+            },
+            "surface": {
+              "type": "string",
+              "enum": [
+                "CHAT_PROJECT",
+                "CHAT_CLEAN",
+                "WORK",
+                "OTHER"
+              ]
+            },
+            "vectors": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "status",
+                  "required_surface"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^RGT-[0-9A-Z-]+$"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "PASS",
+                      "FAIL",
+                      "OPEN",
+                      "BLOCKED",
+                      "NOT_RUN"
+                    ]
+                  },
+                  "required_surface": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "detail": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            "mutation_status": {
+              "type": "string",
+              "enum": [
+                "NONE",
+                "MUTATED"
+              ]
+            },
+            "scientific_authority_delta": {
+              "type": "string",
+              "const": "NONE"
+            },
+            "evidence_refs": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            }
+          }
+        },
+        "planned_extension": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "status",
+            "purpose",
+            "must_preserve"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "PREPARED_NOT_DEPLOYED",
+                "DEPLOYED"
+              ]
+            },
+            "purpose": {
+              "type": "string",
+              "minLength": 1
+            },
+            "must_preserve": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            }
+          }
+        },
+        "deployment_state": {
+          "type": "string",
+          "enum": [
+            "PREPARED_NOT_DEPLOYED",
+            "DEPLOYED_ALPHA",
+            "BLOCKED"
+          ]
+        },
+        "deployment_blockers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "authority_delta": {
+          "type": "string",
+          "const": "NONE"
+        },
+        "next_gate": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  },
+  "sync_manifest": {
+    "schema": "GILC/CODEXSTATION/OMEGA-NEXT/OPENAI-PLUGIN-SYNC/0.1",
+    "version": "0.1",
+    "omega_next_root_id": "drive:1PgsUYHh_MgiXMC8O-sXZgJ9oEvglI1vd",
+    "root_semantic_fingerprint": "074218146dbea2821277e98b90c89bd405bc2f882443fe03cd477337f5100863",
+    "plugin_baseline": {
+      "plugin_id": "Plugin_61ce89a2af3c819183f45b6d721005e2",
+      "name": "gilc-codexstation",
+      "version": "0.3.0-alpha.2",
+      "release_id": "pluginrel_6abecf39798c8191a75c350743c84dc0",
+      "scope": "USER"
+    },
+    "observed_plugin_skills": [
+      "canonical-evolution",
+      "codexstation-capability-router",
+      "codexstation-evolution-kernel",
+      "codexstation-knowledge-metabolism",
+      "codexstation-orchestrator",
+      "codexstation-regression-harness",
+      "codexstation-stack-resolver",
+      "evidence-gate",
+      "release-packager"
+    ],
+    "skill_bindings": [
+      {
+        "omega_next_skill_uri": "cs://skill/codexstation/orchestrator@1",
+        "plugin_skill": "codexstation-orchestrator",
+        "binding_class": "DIRECT",
+        "status": "OBSERVED_INSTALLED",
+        "authority_ceiling": "METHOD",
+        "capability_claim": "OBSERVED_PLUGIN_SKILL",
+        "source_refs": [
+          "plugin-skill:codexstation-orchestrator"
+        ]
+      },
+      {
+        "omega_next_skill_uri": "cs://skill/codexstation/stack-resolver@1",
+        "plugin_skill": "codexstation-stack-resolver",
+        "binding_class": "DIRECT",
+        "status": "OBSERVED_INSTALLED",
+        "authority_ceiling": "METHOD",
+        "capability_claim": "OBSERVED_PLUGIN_SKILL",
+        "source_refs": [
+          "plugin-skill:codexstation-stack-resolver"
+        ]
+      },
+      {
+        "omega_next_skill_uri": "cs://skill/codexstation/knowledge-metabolism@1",
+        "plugin_skill": "codexstation-knowledge-metabolism",
+        "binding_class": "DIRECT",
+        "status": "OBSERVED_INSTALLED",
+        "authority_ceiling": "METHOD",
+        "capability_claim": "OBSERVED_PLUGIN_SKILL",
+        "source_refs": [
+          "plugin-skill:codexstation-knowledge-metabolism"
+        ]
+      },
+      {
+        "omega_next_skill_uri": "cs://skill/codexstation/capability-router@1",
+        "plugin_skill": "codexstation-capability-router",
+        "binding_class": "DIRECT",
+        "status": "OBSERVED_INSTALLED",
+        "authority_ceiling": "METHOD",
+        "capability_claim": "OBSERVED_PLUGIN_SKILL",
+        "source_refs": [
+          "plugin-skill:codexstation-capability-router"
+        ]
+      },
+      {
+        "omega_next_skill_uri": "cs://skill/codexstation/evidence-gate@1",
+        "plugin_skill": "evidence-gate",
+        "binding_class": "DIRECT",
+        "status": "OBSERVED_INSTALLED",
+        "authority_ceiling": "METHOD",
+        "capability_claim": "OBSERVED_PLUGIN_SKILL",
+        "source_refs": [
+          "plugin-skill:evidence-gate"
+        ]
+      },
+      {
+        "omega_next_skill_uri": "cs://skill/codexstation/canonical-evolution@1",
+        "plugin_skill": "canonical-evolution",
+        "binding_class": "DIRECT",
+        "status": "OBSERVED_INSTALLED",
+        "authority_ceiling": "METHOD",
+        "capability_claim": "OBSERVED_PLUGIN_SKILL",
+        "source_refs": [
+          "plugin-skill:canonical-evolution"
+        ]
+      },
+      {
+        "omega_next_skill_uri": "cs://skill/codexstation/release-packager@1",
+        "plugin_skill": "release-packager",
+        "binding_class": "DIRECT",
+        "status": "OBSERVED_INSTALLED",
+        "authority_ceiling": "METHOD",
+        "capability_claim": "OBSERVED_PLUGIN_SKILL",
+        "source_refs": [
+          "plugin-skill:release-packager"
+        ]
+      }
+    ],
+    "runtime_gate_receipt": {
+      "receipt_id": "plugin-runtime:v0.3.0-alpha.2:chat-project:2026-10-04",
+      "plugin_id": "Plugin_61ce89a2af3c819183f45b6d721005e2",
+      "plugin_version": "0.3.0-alpha.2",
+      "release_id": "pluginrel_6abecf39798c8191a75c350743c84dc0",
+      "surface": "CHAT_PROJECT",
+      "vectors": [
+        {
+          "id": "RGT-01",
+          "status": "PASS",
+          "required_surface": "CHAT_PROJECT",
+          "detail": "Live Ω NEXT Drive root preferred for currency; bundled stack retained for provenance/fallback."
+        },
+        {
+          "id": "RGT-02",
+          "status": "PASS",
+          "required_surface": "CHAT_PROJECT_OR_CHAT_CLEAN",
+          "detail": "MLCO RC0.37, P27, Crystal P65/S019, OMEGA101, and Ω NEXT remain distinct scoped lineages."
+        },
+        {
+          "id": "RGT-03",
+          "status": "PASS",
+          "required_surface": "CHAT_PROJECT_OR_CHAT_CLEAN",
+          "detail": "Cross-lineage/source-reported PASS promotion rejected fail-closed; mutation NONE."
+        },
+        {
+          "id": "RGT-04",
+          "status": "OPEN",
+          "required_surface": "CHAT_CLEAN",
+          "detail": "Not run here; clean Chat outside Project is required."
+        }
+      ],
+      "mutation_status": "NONE",
+      "scientific_authority_delta": "NONE",
+      "evidence_refs": [
+        "drive:1Wo3fYBzPl7dqHslKrC7COvqo6q33Ri8eadhOz4tlfnY",
+        "plugin-release:pluginrel_6abecf39798c8191a75c350743c84dc0"
+      ]
+    },
+    "planned_extension": {
+      "name": "codexstation-omega-next-sync",
+      "status": "PREPARED_NOT_DEPLOYED",
+      "purpose": "Bind Ω NEXT shared root/fingerprint, source precedence, distribution state, and Skill Spindle routing into the plugin without replacing existing skills or closing inherited runtime gates by declaration.",
+      "must_preserve": [
+        "SAME_LABEL != SAME_LINEAGE",
+        "SKILL != HOST_CAPABILITY",
+        "SOURCE != AUTHORITY",
+        "PLATFORM_PROFILE != CANON_FORK",
+        "CLEAN_CHAT_REQUIRED != SAME_CHAT_SELF_REPORT",
+        "RUNTIME_PASS != SCIENTIFIC_PASS"
+      ]
+    },
+    "deployment_state": "PREPARED_NOT_DEPLOYED",
+    "deployment_blockers": [
+      "RGT-04_BUNDLED_FALLBACK_CLEAN_CHAT"
+    ],
+    "authority_delta": "NONE",
+    "next_gate": "RGT-04_BUNDLED_FALLBACK_CLEAN_CHAT"
+  },
+  "non_claim": "Prepared synchronization contract only. No live plugin mutation/deployment, RC promotion, scientific/formal promotion, or clean-chat PASS is claimed."
+}
