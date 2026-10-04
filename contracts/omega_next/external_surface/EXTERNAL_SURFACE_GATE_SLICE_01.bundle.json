@@ -1,0 +1,353 @@
+{
+  "schema": "GILC/CODEXSTATION/OMEGA-NEXT/EXTERNAL-SURFACE-RECEIPT-BUNDLE/0.1",
+  "version": "0.1",
+  "schemas": {
+    "ExternalSurfaceReceipt.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/ExternalSurfaceReceipt.schema.json",
+      "title": "ExternalSurfaceReceipt",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_id",
+        "gate_id",
+        "surface",
+        "independent_surface_observed",
+        "authority_delta",
+        "evidence_refs"
+      ],
+      "properties": {
+        "receipt_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "gate_id": {
+          "type": "string",
+          "enum": [
+            "NB00_LIVE_CONFORMANCE_01",
+            "RGT-04_BUNDLED_FALLBACK_CLEAN_CHAT"
+          ]
+        },
+        "surface": {
+          "type": "string",
+          "enum": [
+            "GEMINI_NOTEBOOK",
+            "CHAT_CLEAN"
+          ]
+        },
+        "independent_surface_observed": {
+          "type": "boolean"
+        },
+        "authority_delta": {
+          "type": "string",
+          "const": "NONE"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "notebook_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notebook_locator": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "root_semantic_fingerprint": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "observed_source_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "six_core_sources_attached": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "instruction_applied": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "tests": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "status"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^T[1-8]$"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "PASS",
+                  "FAIL",
+                  "BLOCKED",
+                  "NOT_RUN"
+                ]
+              },
+              "detail": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "plugin_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "plugin_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "plugin_release_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "project_context_present": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "bundled_source_named": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "snapshot_caveat_present": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "live_canon_claim_without_live_evidence": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "scientific_authority_delta": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "NONE",
+            null
+          ]
+        },
+        "result": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "PASS",
+            "FAIL",
+            "BLOCKED",
+            null
+          ]
+        },
+        "transcript_excerpt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "observed_capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "ExternalSurfaceGateManifest.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/ExternalSurfaceGateManifest.schema.json",
+      "title": "ExternalSurfaceGateManifest",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "version",
+        "root_semantic_fingerprint",
+        "plugin_baseline",
+        "gates",
+        "packet_drive_id",
+        "authority_delta"
+      ],
+      "properties": {
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "root_semantic_fingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "plugin_baseline": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "plugin_id",
+            "version",
+            "release_id"
+          ],
+          "properties": {
+            "plugin_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:/-]+$"
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "release_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:/-]+$"
+            }
+          }
+        },
+        "gates": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "gate_id",
+              "required_surface",
+              "current_status",
+              "receipt_schema",
+              "next_on_pass"
+            ],
+            "properties": {
+              "gate_id": {
+                "type": "string",
+                "enum": [
+                  "NB00_LIVE_CONFORMANCE_01",
+                  "RGT-04_BUNDLED_FALLBACK_CLEAN_CHAT"
+                ]
+              },
+              "required_surface": {
+                "type": "string",
+                "enum": [
+                  "GEMINI_NOTEBOOK",
+                  "CHAT_CLEAN"
+                ]
+              },
+              "current_status": {
+                "type": "string",
+                "enum": [
+                  "OPEN",
+                  "PASS",
+                  "FAIL",
+                  "BLOCKED"
+                ]
+              },
+              "receipt_schema": {
+                "type": "string",
+                "minLength": 1
+              },
+              "next_on_pass": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "packet_drive_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "authority_delta": {
+          "type": "string",
+          "const": "NONE"
+        }
+      }
+    }
+  },
+  "manifest": {
+    "schema": "GILC/CODEXSTATION/OMEGA-NEXT/EXTERNAL-SURFACE-GATE/0.1",
+    "version": "0.1",
+    "root_semantic_fingerprint": "074218146dbea2821277e98b90c89bd405bc2f882443fe03cd477337f5100863",
+    "plugin_baseline": {
+      "plugin_id": "Plugin_61ce89a2af3c819183f45b6d721005e2",
+      "version": "0.3.0-alpha.2",
+      "release_id": "pluginrel_6abecf39798c8191a75c350743c84dc0"
+    },
+    "gates": [
+      {
+        "gate_id": "NB00_LIVE_CONFORMANCE_01",
+        "required_surface": "GEMINI_NOTEBOOK",
+        "current_status": "OPEN",
+        "receipt_schema": "ExternalSurfaceReceipt",
+        "next_on_pass": "BOOT_NEXT_SPECIALIST_CELL"
+      },
+      {
+        "gate_id": "RGT-04_BUNDLED_FALLBACK_CLEAN_CHAT",
+        "required_surface": "CHAT_CLEAN",
+        "current_status": "OPEN",
+        "receipt_schema": "ExternalSurfaceReceipt",
+        "next_on_pass": "EVALUATE_OPENAI_PLUGIN_SYNC_DEPLOYMENT"
+      }
+    ],
+    "packet_drive_id": "drive:1a-0_alAOeFMxbSY0unK_egftkEq41U_Ijy_wt0EqCgs",
+    "authority_delta": "NONE"
+  },
+  "non_claim": "This bundle validates returned external-surface receipts. It does not manufacture independent execution evidence or close a gate without an admissible receipt."
+}

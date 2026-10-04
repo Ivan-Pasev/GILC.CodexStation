@@ -1,0 +1,18 @@
+{
+  "schema": "GILC/CODEXSTATION/OMEGA-NEXT/GOOGLE-NOTEBOOK-BOOT-SLICE-01/0.1",
+  "version": "0.1",
+  "canonical_drive_root": "drive:1PgsUYHh_MgiXMC8O-sXZgJ9oEvglI1vd",
+  "branch": "omega-next-google-notebook-boot-01",
+  "parent_branch": "omega-next-distribution-compiler-01",
+  "machine_bundle": "contracts/omega_next/google_notebook/GOOGLE_NOTEBOOK_BOOT_SLICE_01.bundle.json",
+  "validator": "src/gilc_codex_station/omega_next/google_notebook/google_notebook_boot.py",
+  "tests": "tests/test_omega_next_google_notebook_boot_slice_01.py",
+  "prepared_receipt": "contracts/omega_next/google_notebook/NB00.prepared.receipt.json",
+  "drive_bootstrap_pack": "drive:14N4eyqgYIfCsWYQH2fyjAZugx6OYmjNoORZccynZaRk",
+  "drive_context_bridge_registry": "drive:14C5PY0VXcIYu34kwXdP9QKFoPpMwkDiSQ1VvAHkNS4I",
+  "root_semantic_fingerprint": "074218146dbea2821277e98b90c89bd405bc2f882443fe03cd477337f5100863",
+  "status": "BOOT_PREPARED",
+  "next_gate": "CREATE_NB00_LIVE_NOTEBOOK_AND_RUN_CONFORMANCE",
+  "authority_delta": "NONE",
+  "non_claim": "Prepared boot architecture only. No live Gemini Notebook object, live retrieval result, host capability beyond observed Drive tooling, deployment, release, scientific or formal promotion is claimed."
+}

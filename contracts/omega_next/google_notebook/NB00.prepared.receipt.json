@@ -1,0 +1,51 @@
+{
+  "receipt_id": "boot:nb00:prepared",
+  "cell_id": "NB00",
+  "notebook_name": "CODEXSTATION Ω NEXT — NB00 — ORCHESTRATOR CONTROL TOWER",
+  "status": "BOOT_PREPARED",
+  "root_semantic_fingerprint": "074218146dbea2821277e98b90c89bd405bc2f882443fe03cd477337f5100863",
+  "core_sources_attached": false,
+  "instruction_applied": false,
+  "canaries": [
+    {
+      "canary_id": "T1_ROOT_RETRIEVAL",
+      "critical": true,
+      "status": "NOT_RUN",
+      "detail": "live notebook object not yet recorded"
+    },
+    {
+      "canary_id": "T2_LINEAGE_NON_COLLAPSE",
+      "critical": true,
+      "status": "NOT_RUN",
+      "detail": "live notebook object not yet recorded"
+    },
+    {
+      "canary_id": "T3_HIGHESTONE_AUTHORITY",
+      "critical": true,
+      "status": "NOT_RUN",
+      "detail": "live notebook object not yet recorded"
+    },
+    {
+      "canary_id": "T4_HOST_CAPABILITY",
+      "critical": true,
+      "status": "NOT_RUN",
+      "detail": "live notebook object not yet recorded"
+    },
+    {
+      "canary_id": "T5_NOTEBOOK_CANON",
+      "critical": true,
+      "status": "NOT_RUN",
+      "detail": "live notebook object not yet recorded"
+    }
+  ],
+  "observed_capabilities": [],
+  "evidence_refs": [
+    "drive:14N4eyqgYIfCsWYQH2fyjAZugx6OYmjNoORZccynZaRk",
+    "drive:14C5PY0VXcIYu34kwXdP9QKFoPpMwkDiSQ1VvAHkNS4I"
+  ],
+  "authority_delta": "NONE",
+  "observed_source_limit": null,
+  "limitations": [
+    "LIVE_NOTEBOOK_OBJECT_NOT_CREATED_FROM_CURRENT_CHATGPT_SURFACE"
+  ]
+}

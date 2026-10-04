@@ -1,0 +1,2132 @@
+{
+  "schema": "GILC/CODEXSTATION/OMEGA-NEXT/DISTRIBUTION-COMPILER-BUNDLE/0.1",
+  "version": "0.1",
+  "authority": "WORKING_IMPLEMENTATION_SPEC",
+  "parent_machine_contract": "omega-g/MACHINE_CONTRACT_SLICE_01",
+  "schemas": {
+    "CanonicalRootManifest.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/CanonicalRootManifest.schema.json",
+      "title": "CanonicalRootManifest",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "root_id",
+        "root_name",
+        "lineage_id",
+        "version",
+        "status",
+        "control_documents",
+        "distribution_roots",
+        "protected_invariants",
+        "source_precedence",
+        "authority_model",
+        "next_target"
+      ],
+      "properties": {
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "root_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "root_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lineage_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "WORKING",
+            "CANDIDATE",
+            "RELEASE_CANDIDATE",
+            "RELEASE"
+          ]
+        },
+        "control_documents": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "start_continue",
+            "solution_engineering_design_spec",
+            "agents",
+            "state_handoff"
+          ],
+          "properties": {
+            "start_continue": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:/-]+$"
+            },
+            "solution_engineering_design_spec": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:/-]+$"
+            },
+            "agents": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:/-]+$"
+            },
+            "state_handoff": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:/-]+$"
+            }
+          }
+        },
+        "distribution_roots": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "google_gemini_notebook",
+            "openai_chatgpt_codex",
+            "evidence_release",
+            "archive"
+          ],
+          "properties": {
+            "google_gemini_notebook": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:/-]+$"
+            },
+            "openai_chatgpt_codex": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:/-]+$"
+            },
+            "evidence_release": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:/-]+$"
+            },
+            "archive": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:/-]+$"
+            }
+          }
+        },
+        "protected_invariants": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "source_precedence": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "authority_model": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "version",
+            "non_promotion_laws"
+          ],
+          "properties": {
+            "version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "non_promotion_laws": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            }
+          }
+        },
+        "next_target": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "SourceLineageRegistry.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/SourceLineageRegistry.schema.json",
+      "title": "SourceLineageRegistry",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "registry_version",
+        "records"
+      ],
+      "properties": {
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "registry_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "records": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "lineage_id",
+              "label",
+              "role",
+              "authority_scope",
+              "status",
+              "active_parent",
+              "merge_policy",
+              "source_refs"
+            ],
+            "properties": {
+              "lineage_id": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9_.:/-]+$"
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1
+              },
+              "role": {
+                "type": "string",
+                "minLength": 1
+              },
+              "authority_scope": {
+                "type": "string",
+                "enum": [
+                  "ACTIVE_CANON",
+                  "LIVE_SOURCE_FOR_LINEAGE",
+                  "SCOPED_PREDECESSOR",
+                  "SCOPED_SOURCE_RESERVOIR",
+                  "SCOPED_RESEARCH_CARRIER",
+                  "SCOPED_EVIDENCE_SIDECAR",
+                  "SCOPED_RUNTIME_REFERENCE",
+                  "SCOPED_THEORY_SOURCE",
+                  "SCOPED_SOURCE"
+                ]
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "ACTIVE",
+                  "WORKING",
+                  "REFERENCE",
+                  "HISTORICAL",
+                  "SUPERSEDED"
+                ]
+              },
+              "active_parent": {
+                "type": "boolean"
+              },
+              "merge_policy": {
+                "type": "string",
+                "enum": [
+                  "ACTIVE_ROOT",
+                  "DISTINCT_UNLESS_WITNESSED",
+                  "EXPLICIT_SUPERSESSION_ONLY"
+                ]
+              },
+              "source_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              },
+              "open_gates": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "SkillSpindleRecord.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/SkillSpindleRecord.schema.json",
+      "title": "SkillSpindleRecord",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "skill_uri",
+        "name",
+        "version",
+        "class",
+        "status",
+        "lineage",
+        "intent",
+        "accepts",
+        "preconditions",
+        "method",
+        "emits",
+        "guards",
+        "source_provenance",
+        "qualification_evidence",
+        "required_capabilities",
+        "host_bindings",
+        "authority_ceiling",
+        "freshness",
+        "test_receipts",
+        "supersedes",
+        "retrieval_tags",
+        "context_cost",
+        "failure_modes"
+      ],
+      "properties": {
+        "skill_uri": {
+          "type": "string",
+          "pattern": "^cs://skill/[A-Za-z0-9_.:/-]+@[A-Za-z0-9_.-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "class": {
+          "type": "string",
+          "enum": [
+            "ORCHESTRATION_METHOD",
+            "RESEARCH_METHOD",
+            "THEOREMATIC_METHOD",
+            "FORMAL_METHOD",
+            "NUMERICAL_METHOD",
+            "STATISTICAL_METHOD",
+            "ENGINEERING_METHOD",
+            "AGENTIC_METHOD",
+            "ARTIFACT_METHOD",
+            "VERIFICATION_METHOD",
+            "RETRIEVAL_METHOD",
+            "CODE_METHOD",
+            "OPERATIONS_METHOD",
+            "WRITING_METHOD",
+            "GOVERNANCE_METHOD"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "IMPORTED",
+            "UNQUALIFIED",
+            "SOURCE_GROUNDED",
+            "QUALIFIED_INTERNAL_METHOD",
+            "MACHINE_TESTED",
+            "EMPIRICALLY_VALIDATED",
+            "INDEPENDENTLY_REPLICATED",
+            "DEPRECATED",
+            "QUARANTINED",
+            "SUPERSEDED"
+          ]
+        },
+        "lineage": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "intent": {
+          "type": "string",
+          "minLength": 1
+        },
+        "accepts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "preconditions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "method": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "emits": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "guards": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "source_provenance": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "qualification_evidence": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "required_capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "host_bindings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "provider",
+              "capability",
+              "binding_state"
+            ],
+            "properties": {
+              "provider": {
+                "type": "string",
+                "minLength": 1
+              },
+              "capability": {
+                "type": "string",
+                "minLength": 1
+              },
+              "binding_state": {
+                "type": "string",
+                "enum": [
+                  "DECLARED_ONLY",
+                  "OBSERVED_AVAILABLE",
+                  "UNAVAILABLE",
+                  "UNKNOWN"
+                ]
+              },
+              "observed_evidence": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            }
+          },
+          "uniqueItems": true
+        },
+        "authority_ceiling": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "METHOD",
+            "EXECUTION",
+            "CANONICAL",
+            "FORMAL",
+            "EMPIRICAL"
+          ]
+        },
+        "freshness": {
+          "type": "string",
+          "enum": [
+            "FRESH",
+            "STALE",
+            "UNKNOWN"
+          ]
+        },
+        "test_receipts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "supersedes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "retrieval_tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "context_cost": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "failure_modes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "SkillIndex.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/SkillIndex.schema.json",
+      "title": "SkillIndex",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "index_version",
+        "skills"
+      ],
+      "properties": {
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "index_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "skills": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/SkillSpindleRecord.schema.json",
+            "title": "SkillSpindleRecord",
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "skill_uri",
+              "name",
+              "version",
+              "class",
+              "status",
+              "lineage",
+              "intent",
+              "accepts",
+              "preconditions",
+              "method",
+              "emits",
+              "guards",
+              "source_provenance",
+              "qualification_evidence",
+              "required_capabilities",
+              "host_bindings",
+              "authority_ceiling",
+              "freshness",
+              "test_receipts",
+              "supersedes",
+              "retrieval_tags",
+              "context_cost",
+              "failure_modes"
+            ],
+            "properties": {
+              "skill_uri": {
+                "type": "string",
+                "pattern": "^cs://skill/[A-Za-z0-9_.:/-]+@[A-Za-z0-9_.-]+$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "version": {
+                "type": "string",
+                "minLength": 1
+              },
+              "class": {
+                "type": "string",
+                "enum": [
+                  "ORCHESTRATION_METHOD",
+                  "RESEARCH_METHOD",
+                  "THEOREMATIC_METHOD",
+                  "FORMAL_METHOD",
+                  "NUMERICAL_METHOD",
+                  "STATISTICAL_METHOD",
+                  "ENGINEERING_METHOD",
+                  "AGENTIC_METHOD",
+                  "ARTIFACT_METHOD",
+                  "VERIFICATION_METHOD",
+                  "RETRIEVAL_METHOD",
+                  "CODE_METHOD",
+                  "OPERATIONS_METHOD",
+                  "WRITING_METHOD",
+                  "GOVERNANCE_METHOD"
+                ]
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "IMPORTED",
+                  "UNQUALIFIED",
+                  "SOURCE_GROUNDED",
+                  "QUALIFIED_INTERNAL_METHOD",
+                  "MACHINE_TESTED",
+                  "EMPIRICALLY_VALIDATED",
+                  "INDEPENDENTLY_REPLICATED",
+                  "DEPRECATED",
+                  "QUARANTINED",
+                  "SUPERSEDED"
+                ]
+              },
+              "lineage": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9_.:/-]+$"
+              },
+              "intent": {
+                "type": "string",
+                "minLength": 1
+              },
+              "accepts": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "preconditions": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "method": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              },
+              "emits": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              },
+              "guards": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              },
+              "source_provenance": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              },
+              "qualification_evidence": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "required_capabilities": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "host_bindings": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "provider",
+                    "capability",
+                    "binding_state"
+                  ],
+                  "properties": {
+                    "provider": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "capability": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "binding_state": {
+                      "type": "string",
+                      "enum": [
+                        "DECLARED_ONLY",
+                        "OBSERVED_AVAILABLE",
+                        "UNAVAILABLE",
+                        "UNKNOWN"
+                      ]
+                    },
+                    "observed_evidence": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "uniqueItems": true
+                    }
+                  }
+                },
+                "uniqueItems": true
+              },
+              "authority_ceiling": {
+                "type": "string",
+                "enum": [
+                  "NONE",
+                  "METHOD",
+                  "EXECUTION",
+                  "CANONICAL",
+                  "FORMAL",
+                  "EMPIRICAL"
+                ]
+              },
+              "freshness": {
+                "type": "string",
+                "enum": [
+                  "FRESH",
+                  "STALE",
+                  "UNKNOWN"
+                ]
+              },
+              "test_receipts": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "supersedes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "retrieval_tags": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              },
+              "context_cost": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "failure_modes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "NotebookCellProfile.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/NotebookCellProfile.schema.json",
+      "title": "NotebookCellProfile",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cell_id",
+        "name",
+        "mission",
+        "required_control_docs",
+        "specialist_source_classes",
+        "default_modes",
+        "prohibitions",
+        "output_contract",
+        "bridge_policy"
+      ],
+      "properties": {
+        "cell_id": {
+          "type": "string",
+          "enum": [
+            "NB00",
+            "NB10",
+            "NB20",
+            "NB30",
+            "NB40"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mission": {
+          "type": "string",
+          "minLength": 1
+        },
+        "required_control_docs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:/-]+$"
+          },
+          "uniqueItems": true,
+          "minItems": 4
+        },
+        "specialist_source_classes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "default_modes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "prohibitions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "output_contract": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "bridge_policy": {
+          "type": "string",
+          "const": "VISIBLE_DRIVE_BRIDGE_ONLY"
+        }
+      }
+    },
+    "DistributionProfile.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/DistributionProfile.schema.json",
+      "title": "DistributionProfile",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "profile_id",
+        "provider",
+        "version",
+        "root_id",
+        "root_semantic_fingerprint",
+        "inherited_invariants",
+        "control_documents",
+        "surfaces",
+        "limitations",
+        "host_adapters",
+        "compiled_views",
+        "semantic_overrides"
+      ],
+      "properties": {
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profile_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "provider": {
+          "type": "string",
+          "enum": [
+            "GOOGLE",
+            "OPENAI"
+          ]
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "root_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "root_semantic_fingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "inherited_invariants": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "control_documents": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:/-]+$"
+          },
+          "uniqueItems": true,
+          "minItems": 4
+        },
+        "surfaces": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "host_adapters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "compiled_views": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "semantic_overrides": {
+          "type": "array",
+          "maxItems": 0
+        }
+      }
+    },
+    "ContextCapsule.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/ContextCapsule.schema.json",
+      "title": "ContextCapsule",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "capsule_id",
+        "lineage_id",
+        "title",
+        "purpose",
+        "scope",
+        "authority_ceiling",
+        "definitions",
+        "current_state",
+        "invariants",
+        "claims",
+        "open_gates",
+        "negative_results",
+        "source_refs",
+        "freshness"
+      ],
+      "properties": {
+        "capsule_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "lineage_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority_ceiling": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "METHOD",
+            "EXECUTION",
+            "CANONICAL",
+            "FORMAL",
+            "EMPIRICAL"
+          ]
+        },
+        "definitions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "current_state": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "invariants": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "claim",
+              "evidence_class",
+              "status",
+              "source_refs"
+            ],
+            "properties": {
+              "claim": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_class": {
+                "type": "string",
+                "minLength": 1
+              },
+              "status": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              }
+            }
+          }
+        },
+        "open_gates": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "negative_results": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "freshness": {
+          "type": "string",
+          "enum": [
+            "FRESH",
+            "STALE",
+            "UNKNOWN"
+          ]
+        }
+      }
+    },
+    "BridgeCapsule.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/BridgeCapsule.schema.json",
+      "title": "BridgeCapsule",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bridge_id",
+        "source_cell",
+        "target_cell",
+        "mission_id",
+        "lineage_id",
+        "claims",
+        "uncertainties",
+        "open_obligations",
+        "artifacts",
+        "recommended_delta",
+        "source_refs"
+      ],
+      "properties": {
+        "bridge_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "source_cell": {
+          "type": "string",
+          "enum": [
+            "NB00",
+            "NB10",
+            "NB20",
+            "NB30",
+            "NB40"
+          ]
+        },
+        "target_cell": {
+          "type": "string",
+          "enum": [
+            "NB00",
+            "NB10",
+            "NB20",
+            "NB30",
+            "NB40"
+          ]
+        },
+        "mission_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "lineage_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "claim",
+              "evidence_class",
+              "source_authority_ceiling",
+              "target_authority_ceiling",
+              "source_refs"
+            ],
+            "properties": {
+              "claim": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence_class": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source_authority_ceiling": {
+                "type": "string",
+                "enum": [
+                  "NONE",
+                  "METHOD",
+                  "EXECUTION",
+                  "CANONICAL",
+                  "FORMAL",
+                  "EMPIRICAL"
+                ]
+              },
+              "target_authority_ceiling": {
+                "type": "string",
+                "enum": [
+                  "NONE",
+                  "METHOD",
+                  "EXECUTION",
+                  "CANONICAL",
+                  "FORMAL",
+                  "EMPIRICAL"
+                ]
+              },
+              "source_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              }
+            }
+          }
+        },
+        "uncertainties": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "open_obligations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "recommended_delta": {
+          "type": "string"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "DistributionConformanceReceipt.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/DistributionConformanceReceipt.schema.json",
+      "title": "DistributionConformanceReceipt",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_id",
+        "profile_id",
+        "root_id",
+        "root_semantic_fingerprint",
+        "decision",
+        "checks",
+        "limitations",
+        "authority_delta",
+        "evidence_refs"
+      ],
+      "properties": {
+        "receipt_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "profile_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "root_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "root_semantic_fingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "FAIL",
+            "BLOCKED"
+          ]
+        },
+        "checks": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "check",
+              "status"
+            ],
+            "properties": {
+              "check": {
+                "type": "string",
+                "minLength": 1
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "PASS",
+                  "FAIL",
+                  "BLOCKED"
+                ]
+              },
+              "detail": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "authority_delta": {
+          "type": "string",
+          "const": "NONE"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    }
+  },
+  "canonical_root_manifest": {
+    "schema": "GILC/CODEXSTATION/OMEGA-NEXT/ROOT/0.1",
+    "root_id": "drive:1PgsUYHh_MgiXMC8O-sXZgJ9oEvglI1vd",
+    "root_name": "CODEXSTATION_OMEGA_NEXT_CANONICAL_R&D_WORKING_TREE",
+    "lineage_id": "codexstation.omega.next",
+    "version": "0.1-genesis",
+    "status": "WORKING",
+    "control_documents": {
+      "start_continue": "drive:10StCOe3wA2585NP2BgKAVDKPMZJRvA_Rtt4z6Dizytk",
+      "solution_engineering_design_spec": "drive:1neCuIi6iJbsOUFRXMlLPEj47nf4W-Y28YCwSGmNpRIE",
+      "agents": "drive:1Yq8b3kBSjDSSWvQgXPGh9lUQWWRAUfCXnQBYxM-CuvA",
+      "state_handoff": "drive:15LoXoVsHkRWtwg2MyHwiNzf8rsD-XOiElWzi9YUrzNI"
+    },
+    "distribution_roots": {
+      "google_gemini_notebook": "drive:1BbAlAppgv3mcLBU1UNZNT-ufCao28CO9",
+      "openai_chatgpt_codex": "drive:1UXGWfBgAqs0wLrZBJ8LUGu6C33GO9Kjm",
+      "evidence_release": "drive:1tzdtQ5f40Ylm4zt2jTCCEm1mS1DJzWhq",
+      "archive": "drive:1d_25_4oqcb4LPbXVH2swMotMQa7sOeQC"
+    },
+    "protected_invariants": [
+      "PLATFORM_PROFILE != CANON_FORK",
+      "COMPILED_VIEW != SEMANTIC_MUTATION",
+      "HOST != STATION",
+      "MODEL_SERVICE != COGNITIVE_ENTITY",
+      "MODEL != REALITY",
+      "SOURCE != AUTHORITY",
+      "CLAIM != EVIDENCE",
+      "SKILL != HOST_CAPABILITY",
+      "HOST_CAPABILITY != EXECUTION_AUTHORITY",
+      "AVAILABLE != AUTHORIZED",
+      "KNOWLEDGE_INGEST != AUTHORITY_PROMOTION",
+      "FORMAL_PROOF != EMPIRICAL_CONFIRMATION",
+      "IMPLEMENTATION_PASS != SCIENTIFIC_PASS",
+      "SAME_LABEL != SAME_LINEAGE",
+      "LATEST_TIMESTAMP != AUTOMATIC_AUTHORITY",
+      "HIGHESTONE != OMNIUS",
+      "OMNIUS != CODEXSTATION",
+      "CHAT_MEMORY != CANONICAL_MEMORY"
+    ],
+    "source_precedence": [
+      "CURRENT_TURN_EVIDENCE_AND_INSTRUCTION",
+      "OMEGA_NEXT_LIVE_CANON",
+      "LIVE_CONNECTED_SOURCE_FOR_REFERENCED_LINEAGE",
+      "DECLARED_ACTIVE_PARENT_OF_LINEAGE",
+      "QUALIFIED_PREDECESSOR_METHOD_OR_EVIDENCE",
+      "BUNDLED_SNAPSHOT",
+      "HISTORICAL_IMPORTED_REFERENCE"
+    ],
+    "authority_model": {
+      "version": "OMEGA-NEXT-AUTHORITY-0.1",
+      "non_promotion_laws": [
+        "PRIORITY != AUTHORITY",
+        "CAPABILITY != AUTHORITY",
+        "TRANSPORT != AUTHORITY_PROMOTION",
+        "CI_PASS != FORMAL_PROOF",
+        "CI_PASS != EMPIRICAL_CONFIRMATION",
+        "PROVIDER_REFUSAL != SCIENTIFIC_REFUTATION"
+      ]
+    },
+    "next_target": "DISTRIBUTION_COMPILER_SLICE_01"
+  },
+  "source_lineage_registry": {
+    "schema": "GILC/CODEXSTATION/OMEGA-NEXT/SOURCE-LINEAGE-REGISTRY/0.1",
+    "registry_version": "0.1",
+    "records": [
+      {
+        "lineage_id": "codexstation.omega.next",
+        "label": "CodexStation Ω NEXT",
+        "role": "provider-independent current R&D root",
+        "authority_scope": "ACTIVE_CANON",
+        "status": "ACTIVE",
+        "active_parent": true,
+        "merge_policy": "ACTIVE_ROOT",
+        "source_refs": [
+          "drive:1PgsUYHh_MgiXMC8O-sXZgJ9oEvglI1vd"
+        ],
+        "open_gates": [
+          "DISTRIBUTION_COMPILER_SLICE_01"
+        ]
+      },
+      {
+        "lineage_id": "codexstation.omega.g",
+        "label": "CodexStation ΩG",
+        "role": "immediate machine-contract predecessor",
+        "authority_scope": "SCOPED_PREDECESSOR",
+        "status": "WORKING",
+        "active_parent": false,
+        "merge_policy": "DISTINCT_UNLESS_WITNESSED",
+        "source_refs": [
+          "drive:10GVQDPph-JVW9EImmOhYXz1_MFjP7bYz"
+        ],
+        "open_gates": [
+          "PLUGIN_INTEGRATION_SLICE_01"
+        ]
+      },
+      {
+        "lineage_id": "codexstation.chatgpt.plugin",
+        "label": "CodexStation ChatGPT Plugin",
+        "role": "live skill-first plugin/runtime lineage",
+        "authority_scope": "LIVE_SOURCE_FOR_LINEAGE",
+        "status": "WORKING",
+        "active_parent": false,
+        "merge_policy": "DISTINCT_UNLESS_WITNESSED",
+        "source_refs": [
+          "drive:CodexStation.ChatGPT.Plugin"
+        ],
+        "open_gates": [
+          "PRIMARY_CHAT_RUNTIME_REGRESSION",
+          "CLEAN_CHAT_BUNDLED_FALLBACK"
+        ]
+      },
+      {
+        "lineage_id": "codexstation.mlco.rc0.37",
+        "label": "CodexStation Ω MLCO RC0.37",
+        "role": "dense provider-independent source reservoir",
+        "authority_scope": "SCOPED_SOURCE_RESERVOIR",
+        "status": "REFERENCE",
+        "active_parent": false,
+        "merge_policy": "DISTINCT_UNLESS_WITNESSED",
+        "source_refs": [
+          "drive:1aAFWIE762du0O68Ly3Y-iqUFVRjLPGHhR4HdeJhKN1Y"
+        ],
+        "open_gates": []
+      },
+      {
+        "lineage_id": "codexstation.omega-csa.p27",
+        "label": "OMEGA-CSA-P27",
+        "role": "Infinite Skill Spindle and research carrier",
+        "authority_scope": "SCOPED_RESEARCH_CARRIER",
+        "status": "REFERENCE",
+        "active_parent": false,
+        "merge_policy": "DISTINCT_UNLESS_WITNESSED",
+        "source_refs": [
+          "bundled:omega_csa_p27"
+        ],
+        "open_gates": []
+      },
+      {
+        "lineage_id": "codexstation.crystal.p65",
+        "label": "Crystal P65",
+        "role": "verification/replay/evidence sidecar",
+        "authority_scope": "SCOPED_EVIDENCE_SIDECAR",
+        "status": "REFERENCE",
+        "active_parent": false,
+        "merge_policy": "DISTINCT_UNLESS_WITNESSED",
+        "source_refs": [
+          "bundled:crystal_p65"
+        ],
+        "open_gates": []
+      },
+      {
+        "lineage_id": "codexstation.omega101",
+        "label": "Ω101",
+        "role": "persistent cognitive/runtime reference",
+        "authority_scope": "SCOPED_RUNTIME_REFERENCE",
+        "status": "REFERENCE",
+        "active_parent": false,
+        "merge_policy": "DISTINCT_UNLESS_WITNESSED",
+        "source_refs": [
+          "bundled:omega101"
+        ],
+        "open_gates": []
+      },
+      {
+        "lineage_id": "codexstation.omnius.core",
+        "label": "CodexStation Omnius Core",
+        "role": "cognitive/mission/visible-memory predecessor",
+        "authority_scope": "SCOPED_PREDECESSOR",
+        "status": "REFERENCE",
+        "active_parent": false,
+        "merge_policy": "DISTINCT_UNLESS_WITNESSED",
+        "source_refs": [
+          "drive:1S_Ia3VdTNi6VD0rdQ1M87Tqz1G9-kQJU"
+        ],
+        "open_gates": []
+      },
+      {
+        "lineage_id": "codexstation.highestone.prime-fabrica",
+        "label": "HighestOne / Prime Fabrica",
+        "role": "frontier selection and assurance source",
+        "authority_scope": "SCOPED_SOURCE",
+        "status": "REFERENCE",
+        "active_parent": false,
+        "merge_policy": "DISTINCT_UNLESS_WITNESSED",
+        "source_refs": [
+          "drive:HIGHESTONE_NEXT_CONTRACT",
+          "drive:PRIME_FABRICA_CONSTITUTION_R0"
+        ],
+        "open_gates": []
+      },
+      {
+        "lineage_id": "dft.2",
+        "label": "DFT 2.0",
+        "role": "lawful transformation, invariant and claim/status theory source",
+        "authority_scope": "SCOPED_THEORY_SOURCE",
+        "status": "REFERENCE",
+        "active_parent": false,
+        "merge_policy": "DISTINCT_UNLESS_WITNESSED",
+        "source_refs": [
+          "drive:DFT2_MASTER",
+          "drive:DFT2-13"
+        ],
+        "open_gates": []
+      }
+    ]
+  },
+  "skill_index": {
+    "schema": "GILC/CODEXSTATION/OMEGA-NEXT/SKILL-INDEX/0.1",
+    "index_version": "0.1",
+    "skills": [
+      {
+        "skill_uri": "cs://skill/codexstation/orchestrator@1",
+        "name": "CodexStation Orchestrator",
+        "version": "1",
+        "class": "ORCHESTRATION_METHOD",
+        "status": "SOURCE_GROUNDED",
+        "lineage": "codexstation.chatgpt.plugin",
+        "intent": "route ROOT/RESUME/NEXT/CASCADE/HARVEST/METABOLIZE/EVOLVE/REGRESSION/EMIT/PACK/RELEASE",
+        "accepts": [
+          "bounded CodexStation mission"
+        ],
+        "preconditions": [
+          "relevant live state resolved"
+        ],
+        "method": [
+          "resolve current state",
+          "apply bounded method",
+          "emit explicit result and residual gates"
+        ],
+        "emits": [
+          "structured result",
+          "continuation or HOLD"
+        ],
+        "guards": [
+          "ROOT is resolve-only by default",
+          "release gates cannot be bypassed"
+        ],
+        "source_provenance": [
+          "plugin:codexstation-orchestrator"
+        ],
+        "qualification_evidence": [],
+        "required_capabilities": [],
+        "host_bindings": [],
+        "authority_ceiling": "METHOD",
+        "freshness": "FRESH",
+        "test_receipts": [],
+        "supersedes": [],
+        "retrieval_tags": [
+          "orchestration",
+          "next",
+          "resume"
+        ],
+        "context_cost": 2,
+        "failure_modes": [
+          "stale state",
+          "authority ambiguity"
+        ]
+      },
+      {
+        "skill_uri": "cs://skill/codexstation/stack-resolver@1",
+        "name": "CodexStation Stack Resolver",
+        "version": "1",
+        "class": "RETRIEVAL_METHOD",
+        "status": "SOURCE_GROUNDED",
+        "lineage": "codexstation.chatgpt.plugin",
+        "intent": "resolve live canon and scoped predecessor lineages without semantic collapse",
+        "accepts": [
+          "bounded CodexStation mission"
+        ],
+        "preconditions": [
+          "relevant live state resolved"
+        ],
+        "method": [
+          "resolve current state",
+          "apply bounded method",
+          "emit explicit result and residual gates"
+        ],
+        "emits": [
+          "structured result",
+          "continuation or HOLD"
+        ],
+        "guards": [
+          "SAME_LABEL != SAME_LINEAGE",
+          "LIVE_CANON != BUNDLED_SNAPSHOT"
+        ],
+        "source_provenance": [
+          "plugin:codexstation-stack-resolver"
+        ],
+        "qualification_evidence": [],
+        "required_capabilities": [],
+        "host_bindings": [],
+        "authority_ceiling": "METHOD",
+        "freshness": "FRESH",
+        "test_receipts": [],
+        "supersedes": [],
+        "retrieval_tags": [
+          "lineage",
+          "root",
+          "resolve"
+        ],
+        "context_cost": 2,
+        "failure_modes": [
+          "stale state",
+          "authority ambiguity"
+        ]
+      },
+      {
+        "skill_uri": "cs://skill/codexstation/knowledge-metabolism@1",
+        "name": "CodexStation Knowledge Metabolism",
+        "version": "1",
+        "class": "RESEARCH_METHOD",
+        "status": "SOURCE_GROUNDED",
+        "lineage": "codexstation.chatgpt.plugin",
+        "intent": "harvest and qualify knowledge without authority promotion",
+        "accepts": [
+          "bounded CodexStation mission"
+        ],
+        "preconditions": [
+          "relevant live state resolved"
+        ],
+        "method": [
+          "resolve current state",
+          "apply bounded method",
+          "emit explicit result and residual gates"
+        ],
+        "emits": [
+          "structured result",
+          "continuation or HOLD"
+        ],
+        "guards": [
+          "KNOWLEDGE_INGEST != AUTHORITY_PROMOTION",
+          "SUMMARY != SOURCE_REPLACEMENT"
+        ],
+        "source_provenance": [
+          "plugin:codexstation-knowledge-metabolism"
+        ],
+        "qualification_evidence": [],
+        "required_capabilities": [],
+        "host_bindings": [],
+        "authority_ceiling": "METHOD",
+        "freshness": "FRESH",
+        "test_receipts": [],
+        "supersedes": [],
+        "retrieval_tags": [
+          "research",
+          "harvest",
+          "metabolize"
+        ],
+        "context_cost": 2,
+        "failure_modes": [
+          "stale state",
+          "authority ambiguity"
+        ]
+      },
+      {
+        "skill_uri": "cs://skill/codexstation/capability-router@1",
+        "name": "CodexStation Capability Router",
+        "version": "1",
+        "class": "AGENTIC_METHOD",
+        "status": "SOURCE_GROUNDED",
+        "lineage": "codexstation.chatgpt.plugin",
+        "intent": "resolve observed host capability and permission for an active operation",
+        "accepts": [
+          "bounded CodexStation mission"
+        ],
+        "preconditions": [
+          "relevant live state resolved"
+        ],
+        "method": [
+          "resolve current state",
+          "apply bounded method",
+          "emit explicit result and residual gates"
+        ],
+        "emits": [
+          "structured result",
+          "continuation or HOLD"
+        ],
+        "guards": [
+          "SKILL != HOST_CAPABILITY",
+          "PAST_CAPABILITY != CURRENT_CAPABILITY"
+        ],
+        "source_provenance": [
+          "plugin:codexstation-capability-router"
+        ],
+        "qualification_evidence": [],
+        "required_capabilities": [],
+        "host_bindings": [],
+        "authority_ceiling": "METHOD",
+        "freshness": "FRESH",
+        "test_receipts": [],
+        "supersedes": [],
+        "retrieval_tags": [
+          "capability",
+          "tool",
+          "host"
+        ],
+        "context_cost": 2,
+        "failure_modes": [
+          "stale state",
+          "authority ambiguity"
+        ]
+      },
+      {
+        "skill_uri": "cs://skill/codexstation/evidence-gate@1",
+        "name": "CodexStation Evidence Gate",
+        "version": "1",
+        "class": "VERIFICATION_METHOD",
+        "status": "SOURCE_GROUNDED",
+        "lineage": "codexstation.chatgpt.plugin",
+        "intent": "apply evidence, provenance and claim-boundary checks before promotion",
+        "accepts": [
+          "bounded CodexStation mission"
+        ],
+        "preconditions": [
+          "relevant live state resolved"
+        ],
+        "method": [
+          "resolve current state",
+          "apply bounded method",
+          "emit explicit result and residual gates"
+        ],
+        "emits": [
+          "structured result",
+          "continuation or HOLD"
+        ],
+        "guards": [
+          "CLAIM != EVIDENCE",
+          "FORMALIZABLE_SPEC != MACHINE_CHECKED_PROOF"
+        ],
+        "source_provenance": [
+          "plugin:evidence-gate"
+        ],
+        "qualification_evidence": [],
+        "required_capabilities": [],
+        "host_bindings": [],
+        "authority_ceiling": "METHOD",
+        "freshness": "FRESH",
+        "test_receipts": [],
+        "supersedes": [],
+        "retrieval_tags": [
+          "evidence",
+          "verify",
+          "claim"
+        ],
+        "context_cost": 2,
+        "failure_modes": [
+          "stale state",
+          "authority ambiguity"
+        ]
+      },
+      {
+        "skill_uri": "cs://skill/codexstation/canonical-evolution@1",
+        "name": "Canonical Evolution",
+        "version": "1",
+        "class": "GOVERNANCE_METHOD",
+        "status": "SOURCE_GROUNDED",
+        "lineage": "codexstation.chatgpt.plugin",
+        "intent": "edit canonical working artifacts while preserving immutable releases and lineage",
+        "accepts": [
+          "bounded CodexStation mission"
+        ],
+        "preconditions": [
+          "relevant live state resolved"
+        ],
+        "method": [
+          "resolve current state",
+          "apply bounded method",
+          "emit explicit result and residual gates"
+        ],
+        "emits": [
+          "structured result",
+          "continuation or HOLD"
+        ],
+        "guards": [
+          "WORKING_MUTABILITY != RELEASE_MUTABILITY",
+          "IMPORTED_STATE != ACTIVE_STATE"
+        ],
+        "source_provenance": [
+          "plugin:canonical-evolution"
+        ],
+        "qualification_evidence": [],
+        "required_capabilities": [],
+        "host_bindings": [],
+        "authority_ceiling": "METHOD",
+        "freshness": "FRESH",
+        "test_receipts": [],
+        "supersedes": [],
+        "retrieval_tags": [
+          "canon",
+          "drive",
+          "evolution"
+        ],
+        "context_cost": 2,
+        "failure_modes": [
+          "stale state",
+          "authority ambiguity"
+        ]
+      },
+      {
+        "skill_uri": "cs://skill/codexstation/release-packager@1",
+        "name": "Release Packager",
+        "version": "1",
+        "class": "OPERATIONS_METHOD",
+        "status": "SOURCE_GROUNDED",
+        "lineage": "codexstation.chatgpt.plugin",
+        "intent": "freeze, validate and package release candidates reproducibly",
+        "accepts": [
+          "bounded CodexStation mission"
+        ],
+        "preconditions": [
+          "relevant live state resolved"
+        ],
+        "method": [
+          "resolve current state",
+          "apply bounded method",
+          "emit explicit result and residual gates"
+        ],
+        "emits": [
+          "structured result",
+          "continuation or HOLD"
+        ],
+        "guards": [
+          "PLUGIN_INSTALL_PASS != RUNTIME_REGRESSION_PASS",
+          "RUNTIME_REGRESSION_PASS != SCIENTIFIC_PASS"
+        ],
+        "source_provenance": [
+          "plugin:release-packager"
+        ],
+        "qualification_evidence": [],
+        "required_capabilities": [],
+        "host_bindings": [],
+        "authority_ceiling": "METHOD",
+        "freshness": "FRESH",
+        "test_receipts": [],
+        "supersedes": [],
+        "retrieval_tags": [
+          "release",
+          "pack",
+          "checksum"
+        ],
+        "context_cost": 2,
+        "failure_modes": [
+          "stale state",
+          "authority ambiguity"
+        ]
+      }
+    ]
+  },
+  "notebook_cells": [
+    {
+      "cell_id": "NB00",
+      "name": "ORCHESTRATOR CONTROL TOWER",
+      "mission": "global state resolution, HighestOne frontier selection, Omnius mission compilation, source routing, bridge reconciliation and distribution synchronization",
+      "default_modes": [
+        "ORCHESTRATION",
+        "STATE",
+        "ROUTING"
+      ],
+      "specialist_source_classes": [
+        "ACTIVE_PROJECT_HANDOFF",
+        "EVIDENCE_RECEIPT",
+        "SOURCE_INDEX"
+      ],
+      "prohibitions": [
+        "DO_NOT_DUMP_RAW_CORPORA",
+        "PRIORITY != TRUTH"
+      ],
+      "output_contract": [
+        "STATE",
+        "FRONTIER",
+        "MISSION",
+        "ROUTE",
+        "ACCEPTANCE",
+        "NEXT_TRIGGER"
+      ],
+      "required_control_docs": [
+        "drive:10StCOe3wA2585NP2BgKAVDKPMZJRvA_Rtt4z6Dizytk",
+        "drive:1neCuIi6iJbsOUFRXMlLPEj47nf4W-Y28YCwSGmNpRIE",
+        "drive:1Yq8b3kBSjDSSWvQgXPGh9lUQWWRAUfCXnQBYxM-CuvA",
+        "drive:15LoXoVsHkRWtwg2MyHwiNzf8rsD-XOiElWzi9YUrzNI"
+      ],
+      "bridge_policy": "VISIBLE_DRIVE_BRIDGE_ONLY"
+    },
+    {
+      "cell_id": "NB10",
+      "name": "FRONTIER SCIENCE + MATHEMATICS",
+      "mission": "frontier science, mathematics, theory construction, formalization, falsification and experiment design",
+      "default_modes": [
+        "THEOREM",
+        "FORMALIZATION",
+        "SCIENCE",
+        "MATHEMATICS"
+      ],
+      "specialist_source_classes": [
+        "PRIMARY_LITERATURE",
+        "THEORY_CANON",
+        "DATA_PROTOCOL"
+      ],
+      "prohibitions": [
+        "DISCOVERY != VALIDATION",
+        "SIMULATION != EXPERIMENT"
+      ],
+      "output_contract": [
+        "DEFINITIONS",
+        "DERIVATION",
+        "ADVERSARIAL_CHECK",
+        "PREDICTIONS",
+        "CLAIM_STATUS"
+      ],
+      "required_control_docs": [
+        "drive:10StCOe3wA2585NP2BgKAVDKPMZJRvA_Rtt4z6Dizytk",
+        "drive:1neCuIi6iJbsOUFRXMlLPEj47nf4W-Y28YCwSGmNpRIE",
+        "drive:1Yq8b3kBSjDSSWvQgXPGh9lUQWWRAUfCXnQBYxM-CuvA",
+        "drive:15LoXoVsHkRWtwg2MyHwiNzf8rsD-XOiElWzi9YUrzNI"
+      ],
+      "bridge_policy": "VISIBLE_DRIVE_BRIDGE_ONLY"
+    },
+    {
+      "cell_id": "NB20",
+      "name": "FRONTIER TECHNOLOGY + ENGINEERING",
+      "mission": "advanced technology and systems engineering from requirements through verification and deployment planning",
+      "default_modes": [
+        "ARCHITECTURE",
+        "ENGINEERING",
+        "SAFETY",
+        "RELIABILITY"
+      ],
+      "specialist_source_classes": [
+        "REQUIREMENTS",
+        "STANDARDS",
+        "DATASHEETS",
+        "DESIGN_FILES"
+      ],
+      "prohibitions": [
+        "DESIGN != BUILT_SYSTEM",
+        "TEST_PASS != UNIVERSAL_RELIABILITY"
+      ],
+      "output_contract": [
+        "REQUIREMENTS",
+        "ARCHITECTURE",
+        "TRADE_SPACE",
+        "HAZARDS",
+        "V_AND_V"
+      ],
+      "required_control_docs": [
+        "drive:10StCOe3wA2585NP2BgKAVDKPMZJRvA_Rtt4z6Dizytk",
+        "drive:1neCuIi6iJbsOUFRXMlLPEj47nf4W-Y28YCwSGmNpRIE",
+        "drive:1Yq8b3kBSjDSSWvQgXPGh9lUQWWRAUfCXnQBYxM-CuvA",
+        "drive:15LoXoVsHkRWtwg2MyHwiNzf8rsD-XOiElWzi9YUrzNI"
+      ],
+      "bridge_policy": "VISIBLE_DRIVE_BRIDGE_ONLY"
+    },
+    {
+      "cell_id": "NB30",
+      "name": "PROFESSIONAL SYNTHESIS + COPY",
+      "mission": "institution-grade and research-grade writing constrained by evidence and claim ceilings",
+      "default_modes": [
+        "WHITEPAPER",
+        "PROPOSAL",
+        "INSTITUTIONAL_COPY",
+        "TECHNICAL_WRITING"
+      ],
+      "specialist_source_classes": [
+        "APPROVED_SOURCE_PACK",
+        "STYLE_PROFILE",
+        "CLAIM_LEDGER"
+      ],
+      "prohibitions": [
+        "PERSUASION != FABRICATION",
+        "GOOD_COPY != CLAIM_INFLATION"
+      ],
+      "output_contract": [
+        "AUDIENCE",
+        "PURPOSE",
+        "CLAIM_CEILING",
+        "ARTIFACT",
+        "QA"
+      ],
+      "required_control_docs": [
+        "drive:10StCOe3wA2585NP2BgKAVDKPMZJRvA_Rtt4z6Dizytk",
+        "drive:1neCuIi6iJbsOUFRXMlLPEj47nf4W-Y28YCwSGmNpRIE",
+        "drive:1Yq8b3kBSjDSSWvQgXPGh9lUQWWRAUfCXnQBYxM-CuvA",
+        "drive:15LoXoVsHkRWtwg2MyHwiNzf8rsD-XOiElWzi9YUrzNI"
+      ],
+      "bridge_policy": "VISIBLE_DRIVE_BRIDGE_ONLY"
+    },
+    {
+      "cell_id": "NB40",
+      "name": "CODING + SYSTEMS ENGINEERING",
+      "mission": "repository architecture, implementation, tests, CI, schemas, adapters, automation and release engineering",
+      "default_modes": [
+        "CODE",
+        "REPOSITORY",
+        "CI",
+        "SYSTEMS_ENGINEERING"
+      ],
+      "specialist_source_classes": [
+        "REPOSITORY",
+        "API_DOCS",
+        "TESTS",
+        "ARCHITECTURE_CONTRACT"
+      ],
+      "prohibitions": [
+        "SOURCE_CODE != EXECUTION_RECEIPT",
+        "CI_PASS != DEPLOYMENT_PASS"
+      ],
+      "output_contract": [
+        "PLAN",
+        "PATCH",
+        "TESTS",
+        "CI",
+        "RECEIPT",
+        "HANDOFF"
+      ],
+      "required_control_docs": [
+        "drive:10StCOe3wA2585NP2BgKAVDKPMZJRvA_Rtt4z6Dizytk",
+        "drive:1neCuIi6iJbsOUFRXMlLPEj47nf4W-Y28YCwSGmNpRIE",
+        "drive:1Yq8b3kBSjDSSWvQgXPGh9lUQWWRAUfCXnQBYxM-CuvA",
+        "drive:15LoXoVsHkRWtwg2MyHwiNzf8rsD-XOiElWzi9YUrzNI"
+      ],
+      "bridge_policy": "VISIBLE_DRIVE_BRIDGE_ONLY"
+    }
+  ],
+  "non_claim": "This bundle defines finite distribution-compilation contracts. It does not prove scientific/formal claims, create live Notebook objects, establish live host capability, close parent plugin regression debt, or constitute a release."
+}

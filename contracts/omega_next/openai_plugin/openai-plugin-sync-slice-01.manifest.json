@@ -1,0 +1,21 @@
+{
+  "schema": "GILC/CODEXSTATION/OMEGA-NEXT/OPENAI-PLUGIN-SYNC-SLICE-01/0.1",
+  "version": "0.1",
+  "canonical_drive_root": "drive:1PgsUYHh_MgiXMC8O-sXZgJ9oEvglI1vd",
+  "root_semantic_fingerprint": "074218146dbea2821277e98b90c89bd405bc2f882443fe03cd477337f5100863",
+  "parent_branch": "omega-next-google-notebook-boot-01",
+  "branch": "omega-next-openai-plugin-sync-01",
+  "plugin_baseline": {
+    "plugin_id": "Plugin_61ce89a2af3c819183f45b6d721005e2",
+    "version": "0.3.0-alpha.2",
+    "release_id": "pluginrel_6abecf39798c8191a75c350743c84dc0"
+  },
+  "bundle": "contracts/omega_next/openai_plugin/OPENAI_PLUGIN_SYNC_SLICE_01.bundle.json",
+  "validator": "src/gilc_codex_station/omega_next/openai_plugin/openai_plugin_sync.py",
+  "tests": "tests/test_omega_next_openai_plugin_sync_slice_01.py",
+  "runtime_receipt_drive": "drive:1Wo3fYBzPl7dqHslKrC7COvqo6q33Ri8eadhOz4tlfnY",
+  "deployment_state": "PREPARED_NOT_DEPLOYED",
+  "blocker": "RGT-04_BUNDLED_FALLBACK_CLEAN_CHAT",
+  "authority_delta": "NONE",
+  "non_claim": "No plugin update or release promotion is performed by this slice. It prepares and validates the synchronization contract while preserving the clean-chat gate."
+}

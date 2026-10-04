@@ -1,0 +1,54 @@
+{
+  "schema": "GILC/CODEXSTATION/OMEGA-NEXT/OPENAI-PLUGIN-SYNC-CI-WITNESS/0.1",
+  "run_date": "2026-10-04",
+  "canonical_drive_root": "drive:1PgsUYHh_MgiXMC8O-sXZgJ9oEvglI1vd",
+  "repository": "Ivan-Pasev/GILC.CodexStation",
+  "branch": "omega-next-openai-plugin-sync-01",
+  "pull_request": 5,
+  "validated_head_sha": "65b932bd9b4730c51bcdbc00956b1d9b5c9def13",
+  "root_semantic_fingerprint": "074218146dbea2821277e98b90c89bd405bc2f882443fe03cd477337f5100863",
+  "plugin_baseline": {
+    "plugin_id": "Plugin_61ce89a2af3c819183f45b6d721005e2",
+    "version": "0.3.0-alpha.2",
+    "release_id": "pluginrel_6abecf39798c8191a75c350743c84dc0"
+  },
+  "runtime_gate_state": {
+    "RGT-01": "PASS",
+    "RGT-02": "PASS",
+    "RGT-03": "PASS",
+    "RGT-04": "OPEN",
+    "primary_chat_runtime_regression": "PARTIAL_PASS_3_OF_4",
+    "rc_promotion_eligible": false
+  },
+  "workflow": {
+    "name": "omega101-ci",
+    "run_id": 37194920875,
+    "run_number": 9,
+    "status": "completed",
+    "conclusion": "success",
+    "matrix": [
+      {
+        "python": "3.11",
+        "job_id": 111414685152,
+        "conclusion": "success"
+      },
+      {
+        "python": "3.12",
+        "job_id": 111414685043,
+        "conclusion": "success"
+      },
+      {
+        "python": "3.13",
+        "job_id": 111414685211,
+        "conclusion": "success"
+      }
+    ],
+    "observed_repository_test_count": 111,
+    "observed_repository_result": "111 passed",
+    "sample_job_log": "Python 3.12 job reported 111 passed in 0.35s"
+  },
+  "sync_state": "PREPARED_NOT_DEPLOYED",
+  "deployment_blocker": "RGT-04_BUNDLED_FALLBACK_CLEAN_CHAT",
+  "authority_delta": "NONE",
+  "non_claim": "CI validates only the finite synchronization contracts/tests. It does not mutate the installed plugin, satisfy the clean-chat gate, authorize RC/release promotion, or create scientific/formal authority."
+}

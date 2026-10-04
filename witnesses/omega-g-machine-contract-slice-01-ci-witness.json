@@ -1,0 +1,47 @@
+{
+  "schema": "GILC/CODEXSTATION/OMEGA-G/MACHINE-CONTRACT-SLICE-01-WITNESS/0.1",
+  "run_date": "2026-10-04",
+  "repository": "Ivan-Pasev/GILC.CodexStation",
+  "branch": "omega-g-machine-contract-01",
+  "pull_request": 1,
+  "implementation_head_sha": "a1310584c93015ebe9352e835cfe6eccc3b7f62b",
+  "workflow": {
+    "name": "omega101-ci",
+    "run_id": 37186466811,
+    "run_number": 3,
+    "status": "completed",
+    "conclusion": "success",
+    "matrix": [
+      {
+        "python": "3.11",
+        "job_id": 111389322830,
+        "conclusion": "success"
+      },
+      {
+        "python": "3.12",
+        "job_id": 111389322782,
+        "conclusion": "success"
+      },
+      {
+        "python": "3.13",
+        "job_id": 111389322711,
+        "conclusion": "success"
+      }
+    ],
+    "observed_test_count": 48,
+    "observed_test_result": "48 passed",
+    "sample_job_log": "Python 3.12 job reported 48 passed in 0.31s"
+  },
+  "local_preflight": {
+    "omega_g_test_file_result": "33 passed",
+    "scope": "ΩG machine-contract slice preflight before remote branch validation"
+  },
+  "gate_interpretation": {
+    "OmegaG-G4": "IMPLEMENTATION_EVIDENCE_PASS_CANDIDATE",
+    "OmegaG-G6": "DETERMINISTIC_ADVERSARIAL_PASS_CANDIDATE",
+    "parent_chat_runtime_regression": "OPEN_UNCHANGED",
+    "release_candidate": "NOT_EARNED"
+  },
+  "authority_delta": "NONE",
+  "non_claim": "Remote CI PASS establishes repository implementation/test evidence for the encoded finite ΩG machine-contract surface only. It does not prove T-ΩG theorem targets, establish production security, close parent ChatGPT plugin runtime regression, or promote formal/empirical authority."
+}
