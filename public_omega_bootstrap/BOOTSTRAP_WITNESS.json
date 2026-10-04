@@ -1,0 +1,27 @@
+{
+  "schema": "GILC/CODEXSTATION/OMEGA-PUBLIC-BOOTSTRAP-WITNESS/0.1",
+  "date": "2026-10-04",
+  "source_branch": "public-omega-repo-bootstrap-01",
+  "target_repository": "Ivan-Pasev/CodexStation.Omega.Public",
+  "target_repository_state": "MANUAL_CREATE_REQUIRED",
+  "publication_of_private_corpus": "NONE",
+  "files_staged": [
+    "public_omega_bootstrap/README.md",
+    "public_omega_bootstrap/PUBLIC_REPO_BLUEPRINT.md",
+    "public_omega_bootstrap/PUBLIC_ANCHOR_SPINE.md",
+    "public_omega_bootstrap/MANIFEST.json"
+  ],
+  "ci": {
+    "workflow": "omega101-ci",
+    "run_id": 37200525196,
+    "conclusion": "success",
+    "python": [
+      "3.11",
+      "3.12",
+      "3.13"
+    ],
+    "observed_tests": "15 passed"
+  },
+  "authority_delta": "NONE",
+  "non_claim": "This witness validates only the public-safe bootstrap staging branch. It does not publish private corpus, create the standalone repository, prove AGI/ASI, or alter scientific/formal authority."
+}
