@@ -1,0 +1,1869 @@
+{
+  "schema": "GILC/CODEXSTATION/OMEGA-G/MACHINE-CONTRACT-BUNDLE/0.1",
+  "version": "0.1",
+  "branch_version": "v0.4.0-alpha.0",
+  "authority": "WORKING_IMPLEMENTATION_EVIDENCE",
+  "schemas": {
+    "CanonicalOntologyRecord.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-g/CanonicalOntologyRecord.schema.json",
+      "title": "CanonicalOntologyRecord",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "object_id",
+        "object_type",
+        "lineage_id",
+        "version",
+        "scope",
+        "authority_class",
+        "evidence_class",
+        "status",
+        "source_refs"
+      ],
+      "properties": {
+        "object_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "object_type": {
+          "type": "string",
+          "enum": [
+            "OBSERVER",
+            "MODEL_SERVICE",
+            "COGNITIVE_ENTITY",
+            "OPERATOR",
+            "STATION",
+            "HOST_PROVIDER",
+            "ORGANIZATION",
+            "DFT_FABRICA",
+            "KBI_CRYSTAL",
+            "HIGHESTONE",
+            "OMNIUS",
+            "PRIME_FABRICA",
+            "CIVOS",
+            "CLAIM",
+            "EVIDENCE",
+            "PROOF",
+            "MEASUREMENT",
+            "SIMULATION",
+            "IMPLEMENTATION",
+            "EXECUTION_RECEIPT",
+            "CANONICAL_MEMORY",
+            "VISIBLE_MEMORY"
+          ]
+        },
+        "lineage_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority_class": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "PRIORITY",
+            "PERMISSION",
+            "EXECUTION",
+            "CANONICAL",
+            "FORMAL",
+            "EMPIRICAL"
+          ]
+        },
+        "evidence_class": {
+          "type": "string",
+          "enum": [
+            "SOURCE_REPORTED",
+            "MODEL_DERIVED",
+            "EXECUTION",
+            "FORMAL_SPEC",
+            "FORMAL_PROOF",
+            "EMPIRICAL_MEASUREMENT",
+            "ENGINEERING_ASSUMPTION",
+            "INDEPENDENT_REPLICATION",
+            "RELEASE_VALIDATION",
+            "HOST_CAPABILITY_OBSERVATION",
+            "NONE"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "WORKING",
+            "CANDIDATE",
+            "RELEASE_CANDIDATE",
+            "RELEASE",
+            "DEPLOYMENT",
+            "REFERENCE",
+            "ACTIVE",
+            "SUPERSEDED",
+            "DEPRECATED",
+            "QUARANTINED",
+            "CONTESTED",
+            "UNKNOWN"
+          ]
+        },
+        "parent_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "supersedes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "host": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "model_service": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "operator": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "observer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "runtime": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "claim_boundary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "NonCollapseRule.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-g/NonCollapseRule.schema.json",
+      "title": "NonCollapseRule",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rule_id",
+        "left_type",
+        "right_type",
+        "disposition",
+        "rationale",
+        "symmetry",
+        "authority_ceiling"
+      ],
+      "properties": {
+        "rule_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "left_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "right_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "disposition": {
+          "type": "string",
+          "enum": [
+            "FORBID",
+            "DISTINCT_BY_DEFAULT",
+            "WITNESS_REQUIRED"
+          ]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "symmetry": {
+          "type": "boolean"
+        },
+        "authority_ceiling": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "PERMISSION",
+            "EXECUTION",
+            "CANONICAL",
+            "FORMAL",
+            "EMPIRICAL"
+          ]
+        },
+        "allowed_witness_types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "disposition": {
+                "const": "WITNESS_REQUIRED"
+              }
+            },
+            "required": [
+              "disposition"
+            ]
+          },
+          "then": {
+            "required": [
+              "allowed_witness_types"
+            ],
+            "properties": {
+              "allowed_witness_types": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "FrontierSnapshot.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-g/FrontierSnapshot.schema.json",
+      "title": "FrontierSnapshot",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fabric_state_id",
+        "lineage_id",
+        "candidate_ids",
+        "open_obligations",
+        "contradictions",
+        "evidence_state",
+        "capability_state",
+        "authority_state",
+        "protected_invariants",
+        "source_refs",
+        "freshness",
+        "observed_at"
+      ],
+      "properties": {
+        "fabric_state_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "lineage_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "candidate_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "open_obligations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "contradictions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "evidence_state": {
+          "type": "object"
+        },
+        "capability_state": {
+          "type": "object"
+        },
+        "authority_state": {
+          "type": "object"
+        },
+        "resource_constraints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "protected_invariants": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "recovery_requirements": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "freshness": {
+          "type": "string",
+          "enum": [
+            "FRESH",
+            "STALE",
+            "UNKNOWN"
+          ]
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "HighestOneSelection.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-g/HighestOneSelection.schema.json",
+      "title": "HighestOneSelection",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "selection_id",
+        "fabric_state_id",
+        "selection_class",
+        "selection_rationale",
+        "priority_dimensions",
+        "blocking_obligations",
+        "required_capabilities",
+        "required_authority",
+        "risk_and_reversibility",
+        "termination_condition",
+        "verification_plan",
+        "crystallization_target",
+        "lineage_parent",
+        "witness_refs",
+        "uncertainties",
+        "rejected_or_deferred_candidates",
+        "next_recompute_trigger"
+      ],
+      "properties": {
+        "selection_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "fabric_state_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "selected_frontier_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "selection_class": {
+          "type": "string",
+          "enum": [
+            "PRIMARY",
+            "FALSIFICATION",
+            "ALTERNATIVE",
+            "PARETO_SET",
+            "HOLD"
+          ]
+        },
+        "selection_rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "priority_dimensions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "blocking_obligations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "required_capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "required_authority": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "expected_closure_gain": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "expected_information_gain": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "risk_and_reversibility": {
+          "type": "string",
+          "minLength": 1
+        },
+        "termination_condition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verification_plan": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "crystallization_target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lineage_parent": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "witness_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "uncertainties": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "rejected_or_deferred_candidates": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "next_recompute_trigger": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "selection_class": {
+                "const": "HOLD"
+              }
+            },
+            "required": [
+              "selection_class"
+            ]
+          },
+          "then": {
+            "properties": {
+              "selected_frontier_id": {
+                "type": "null"
+              },
+              "blocking_obligations": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "selected_frontier_id": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "selected_frontier_id"
+            ]
+          }
+        }
+      ]
+    },
+    "OmniusMissionContract.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-g/OmniusMissionContract.schema.json",
+      "title": "OmniusMissionContract",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mission_id",
+        "selection_id",
+        "objective",
+        "scope",
+        "success_conditions",
+        "stop_conditions",
+        "primary_path",
+        "required_sources",
+        "required_tools",
+        "required_capabilities",
+        "required_authority",
+        "execution_plan",
+        "critique_plan",
+        "verification_plan",
+        "artifact_targets",
+        "evidence_requirements",
+        "state_update_targets",
+        "continuation_output",
+        "human_approval_points",
+        "risk_register",
+        "unresolved_questions"
+      ],
+      "properties": {
+        "mission_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "selection_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "objective": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "success_conditions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "stop_conditions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "primary_path": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "target_gate",
+            "steps",
+            "termination_condition",
+            "reconciliation_requirement"
+          ],
+          "properties": {
+            "target_gate": {
+              "type": "string",
+              "minLength": 1
+            },
+            "steps": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "termination_condition": {
+              "type": "string",
+              "minLength": 1
+            },
+            "reconciliation_requirement": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "falsification_path": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "reason",
+                "target_gate",
+                "steps",
+                "termination_condition",
+                "reconciliation_requirement"
+              ],
+              "properties": {
+                "reason": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "target_gate": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "uniqueItems": true,
+                  "minItems": 1
+                },
+                "termination_condition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "reconciliation_requirement": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        },
+        "alternative_path": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "reason",
+                "target_gate",
+                "steps",
+                "termination_condition",
+                "reconciliation_requirement"
+              ],
+              "properties": {
+                "reason": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "target_gate": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "uniqueItems": true,
+                  "minItems": 1
+                },
+                "termination_condition": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "reconciliation_requirement": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          ]
+        },
+        "required_sources": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "required_tools": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "required_capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "required_authority": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "execution_plan": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "critique_plan": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "verification_plan": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "artifact_targets": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "evidence_requirements": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "state_update_targets": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "continuation_output": {
+          "type": "string",
+          "minLength": 1
+        },
+        "human_approval_points": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "risk_register": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "unresolved_questions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "HostCapabilityDescriptor.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-g/HostCapabilityDescriptor.schema.json",
+      "title": "HostCapabilityDescriptor",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "descriptor_id",
+        "adapter_id",
+        "provider",
+        "surface",
+        "account_scope",
+        "capability",
+        "state",
+        "observed_evidence",
+        "freshness",
+        "last_verified_at",
+        "permission_model",
+        "data_boundary",
+        "failure_modes"
+      ],
+      "properties": {
+        "descriptor_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "adapter_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "provider": {
+          "type": "string",
+          "minLength": 1
+        },
+        "surface": {
+          "type": "string",
+          "minLength": 1
+        },
+        "account_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "capability": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "AVAILABLE_READ",
+            "AVAILABLE_WRITE",
+            "AVAILABLE_EXECUTE",
+            "AVAILABLE_BUT_APPROVAL_REQUIRED",
+            "DECLARED_SOURCE_ONLY",
+            "UNAVAILABLE",
+            "UNKNOWN"
+          ]
+        },
+        "observed_evidence": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "freshness": {
+          "type": "string",
+          "enum": [
+            "FRESH",
+            "STALE",
+            "UNKNOWN"
+          ]
+        },
+        "last_verified_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "permission_model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "data_boundary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "export_paths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "import_paths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "quota_constraints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "retention_constraints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "privacy_constraints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "failure_modes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "approval_requirements": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "unknowns": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "ClaimAuthorityReceipt.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-g/ClaimAuthorityReceipt.schema.json",
+      "title": "ClaimAuthorityReceipt",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_id",
+        "claim_id",
+        "transition_axis",
+        "from_status",
+        "to_status",
+        "decision",
+        "evidence_refs",
+        "witness_refs",
+        "authority_source",
+        "scope",
+        "authority_ceiling",
+        "reason",
+        "semantic_authority_delta"
+      ],
+      "properties": {
+        "receipt_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "claim_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "transition_axis": {
+          "type": "string",
+          "enum": [
+            "FORMAL",
+            "EMPIRICAL",
+            "IMPLEMENTATION",
+            "PROVENANCE",
+            "SCOPE",
+            "CANONICAL_AUTHORITY",
+            "EXECUTION_AUTHORITY",
+            "IDENTITY_BINDING",
+            "HOST_SUBSTRATE"
+          ]
+        },
+        "from_status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "to_status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "ALLOW",
+            "BLOCK",
+            "ESCALATE"
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "witness_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "authority_source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority_ceiling": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "PERMISSION",
+            "EXECUTION",
+            "CANONICAL",
+            "FORMAL",
+            "EMPIRICAL"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "semantic_authority_delta": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "FORMAL",
+            "EMPIRICAL",
+            "IMPLEMENTATION",
+            "PROVENANCE",
+            "CANONICAL",
+            "EXECUTION",
+            "SCOPE"
+          ]
+        },
+        "digest": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "ExecutionReceipt.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-g/ExecutionReceipt.schema.json",
+      "title": "ExecutionReceipt",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_id",
+        "mission_id",
+        "action_id",
+        "host_adapter",
+        "capability_used",
+        "authority_used",
+        "input_digest",
+        "prestate_digest",
+        "output_digest",
+        "poststate_digest",
+        "operation",
+        "execution_status",
+        "observed_effect",
+        "evidence_refs",
+        "errors_or_refusals",
+        "semantic_authority_delta"
+      ],
+      "properties": {
+        "receipt_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "mission_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "action_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "host_adapter": {
+          "type": "string",
+          "minLength": 1
+        },
+        "capability_used": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority_used": {
+          "type": "string",
+          "minLength": 1
+        },
+        "input_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "prestate_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "output_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "poststate_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "operation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "execution_status": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "FAIL",
+            "BLOCKED",
+            "PARTIAL",
+            "UNKNOWN"
+          ]
+        },
+        "observed_effect": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "errors_or_refusals": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "failure_class": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "CAPABILITY_MISSING",
+            "PERMISSION_DENIED",
+            "QUOTA_EXCEEDED",
+            "POLICY_REFUSAL",
+            "NETWORK_ERROR",
+            "FORMAT_ERROR",
+            "TOOL_ERROR",
+            "STATE_STALE",
+            "UNVERIFIED_EFFECT",
+            "UNKNOWN_FAILURE",
+            null
+          ]
+        },
+        "semantic_authority_delta": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "FORMAL",
+            "EMPIRICAL",
+            "IMPLEMENTATION",
+            "PROVENANCE",
+            "CANONICAL",
+            "EXECUTION",
+            "SCOPE"
+          ]
+        },
+        "reproducibility_notes": {
+          "type": "string"
+        }
+      }
+    },
+    "MigrationWitness.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-g/MigrationWitness.schema.json",
+      "title": "MigrationWitness",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "witness_id",
+        "station_identity",
+        "entity_roots",
+        "source_adapter",
+        "target_adapter",
+        "canonical_state_digest",
+        "lineage_digest",
+        "provenance_digest",
+        "authority_map_digest",
+        "capability_rediscovery_required",
+        "continuity_verified",
+        "source_refs"
+      ],
+      "properties": {
+        "witness_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "station_identity": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entity_roots": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "source_adapter": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_adapter": {
+          "type": "string",
+          "minLength": 1
+        },
+        "canonical_state_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "lineage_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "provenance_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "authority_map_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "capability_rediscovery_required": {
+          "type": "boolean",
+          "const": true
+        },
+        "continuity_verified": {
+          "type": "boolean"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "residual_obligations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "CanonAdmissionReceipt.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-g/CanonAdmissionReceipt.schema.json",
+      "title": "CanonAdmissionReceipt",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_id",
+        "object_id",
+        "decision",
+        "source_state",
+        "target_state",
+        "scope",
+        "evidence_class",
+        "authority_ceiling",
+        "evidence_refs",
+        "witness_refs",
+        "residual_obligations",
+        "lineage_parent",
+        "semantic_authority_delta"
+      ],
+      "properties": {
+        "receipt_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "object_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "ADMIT",
+            "SUPERSEDE",
+            "QUARANTINE",
+            "CONTEST",
+            "REJECT",
+            "HOLD"
+          ]
+        },
+        "source_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_state": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_class": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority_ceiling": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "PERMISSION",
+            "EXECUTION",
+            "CANONICAL",
+            "FORMAL",
+            "EMPIRICAL"
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "witness_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "residual_obligations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "lineage_parent": {
+          "type": "string",
+          "minLength": 1
+        },
+        "supersedes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "semantic_authority_delta": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "FORMAL",
+            "EMPIRICAL",
+            "IMPLEMENTATION",
+            "PROVENANCE",
+            "CANONICAL",
+            "EXECUTION",
+            "SCOPE"
+          ]
+        },
+        "target_canonical_digest": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    }
+  },
+  "registries": {
+    "CanonicalOntologyRegistry.v0.1": {
+      "schema": "GILC/CODEXSTATION/OMEGA-G/ONTOLOGY-REGISTRY/0.1",
+      "version": "0.1",
+      "lineage_id": "codexstation.omega-g",
+      "authority": "WORKING_SPECIFICATION",
+      "source_refs": [
+        "drive:CODEXSTATION_OMEGA_THEOREMATIC_CONSTITUTIONAL_SPINE_v0.1",
+        "drive:CANONICAL_ONTOLOGY_ANTI_COLLAPSE_REGISTRY_v0.1"
+      ],
+      "records": [
+        {
+          "object_id": "type:observer",
+          "object_type": "OBSERVER",
+          "lineage_id": "omega-g:ontology",
+          "version": "0.1",
+          "scope": "access/projection standpoint",
+          "authority_class": "NONE",
+          "evidence_class": "FORMAL_SPEC",
+          "status": "WORKING",
+          "source_refs": [
+            "drive:ontology:v0.1"
+          ]
+        },
+        {
+          "object_id": "type:model-service",
+          "object_type": "MODEL_SERVICE",
+          "lineage_id": "omega-g:ontology",
+          "version": "0.1",
+          "scope": "replaceable reasoning/computation service",
+          "authority_class": "NONE",
+          "evidence_class": "FORMAL_SPEC",
+          "status": "WORKING",
+          "source_refs": [
+            "drive:ontology:v0.1"
+          ]
+        },
+        {
+          "object_id": "type:station",
+          "object_type": "STATION",
+          "lineage_id": "omega-g:ontology",
+          "version": "0.1",
+          "scope": "runtime/station coordinating state capability execution evidence continuity",
+          "authority_class": "CANONICAL",
+          "evidence_class": "FORMAL_SPEC",
+          "status": "WORKING",
+          "source_refs": [
+            "drive:ontology:v0.1"
+          ]
+        },
+        {
+          "object_id": "type:host-provider",
+          "object_type": "HOST_PROVIDER",
+          "lineage_id": "omega-g:ontology",
+          "version": "0.1",
+          "scope": "execution/storage/model/tool substrate",
+          "authority_class": "PERMISSION",
+          "evidence_class": "FORMAL_SPEC",
+          "status": "WORKING",
+          "source_refs": [
+            "drive:abi:v0.1"
+          ]
+        },
+        {
+          "object_id": "type:highestone",
+          "object_type": "HIGHESTONE",
+          "lineage_id": "omega-g:ontology",
+          "version": "0.1",
+          "scope": "continuity-aware frontier selection/assurance",
+          "authority_class": "PRIORITY",
+          "evidence_class": "SOURCE_REPORTED",
+          "status": "WORKING",
+          "source_refs": [
+            "drive:HIGHESTONE_NEXT_CONTRACT"
+          ]
+        },
+        {
+          "object_id": "type:omnius",
+          "object_type": "OMNIUS",
+          "lineage_id": "omega-g:ontology",
+          "version": "0.1",
+          "scope": "reflexive cognitive/mission fabric",
+          "authority_class": "NONE",
+          "evidence_class": "SOURCE_REPORTED",
+          "status": "WORKING",
+          "source_refs": [
+            "drive:OMNIUS_COGNITIVE_FABRIC_EXTENSION"
+          ]
+        },
+        {
+          "object_id": "type:dft-fabrica",
+          "object_type": "DFT_FABRICA",
+          "lineage_id": "omega-g:ontology",
+          "version": "0.1",
+          "scope": "lawful composition/transformation semantics",
+          "authority_class": "FORMAL",
+          "evidence_class": "FORMAL_SPEC",
+          "status": "WORKING",
+          "source_refs": [
+            "drive:DFT2_MASTER"
+          ]
+        },
+        {
+          "object_id": "type:kbi-crystal",
+          "object_type": "KBI_CRYSTAL",
+          "lineage_id": "omega-g:ontology",
+          "version": "0.1",
+          "scope": "canonical memory/dependency/evidence lattice",
+          "authority_class": "CANONICAL",
+          "evidence_class": "FORMAL_SPEC",
+          "status": "WORKING",
+          "source_refs": [
+            "drive:PrimeFabrica_R0"
+          ]
+        },
+        {
+          "object_id": "type:prime-fabrica",
+          "object_type": "PRIME_FABRICA",
+          "lineage_id": "omega-g:ontology",
+          "version": "0.1",
+          "scope": "root cyber-physical House architecture",
+          "authority_class": "CANONICAL",
+          "evidence_class": "SOURCE_REPORTED",
+          "status": "WORKING",
+          "source_refs": [
+            "drive:PrimeFabrica_R0"
+          ]
+        },
+        {
+          "object_id": "type:civos",
+          "object_type": "CIVOS",
+          "lineage_id": "omega-g:ontology",
+          "version": "0.1",
+          "scope": "civilizational operational realization domain",
+          "authority_class": "NONE",
+          "evidence_class": "FORMAL_SPEC",
+          "status": "WORKING",
+          "source_refs": [
+            "drive:PrimeFabrica_R0"
+          ]
+        }
+      ]
+    },
+    "NonCollapseRules.v0.1": {
+      "schema": "GILC/CODEXSTATION/OMEGA-G/NON-COLLAPSE-RULES/0.1",
+      "version": "0.1",
+      "authority": "WORKING_SPECIFICATION",
+      "rules": [
+        {
+          "rule_id": "NC-001",
+          "left_type": "MODEL_SERVICE",
+          "right_type": "REALITY",
+          "disposition": "FORBID",
+          "rationale": "Model is not reality",
+          "symmetry": true,
+          "authority_ceiling": "NONE",
+          "allowed_witness_types": [],
+          "source_refs": [
+            "drive:CANONICAL_ONTOLOGY_ANTI_COLLAPSE_REGISTRY_v0.1"
+          ]
+        },
+        {
+          "rule_id": "NC-002",
+          "left_type": "HOST_PROVIDER",
+          "right_type": "STATION",
+          "disposition": "FORBID",
+          "rationale": "Host is not Station",
+          "symmetry": true,
+          "authority_ceiling": "NONE",
+          "allowed_witness_types": [],
+          "source_refs": [
+            "drive:CANONICAL_ONTOLOGY_ANTI_COLLAPSE_REGISTRY_v0.1"
+          ]
+        },
+        {
+          "rule_id": "NC-003",
+          "left_type": "HIGHESTONE",
+          "right_type": "OMNIUS",
+          "disposition": "FORBID",
+          "rationale": "Selection is not mission cognition",
+          "symmetry": true,
+          "authority_ceiling": "NONE",
+          "allowed_witness_types": [],
+          "source_refs": [
+            "drive:CANONICAL_ONTOLOGY_ANTI_COLLAPSE_REGISTRY_v0.1"
+          ]
+        },
+        {
+          "rule_id": "NC-004",
+          "left_type": "HIGHESTONE",
+          "right_type": "AUTHORIZATION",
+          "disposition": "FORBID",
+          "rationale": "Priority selection does not create authorization",
+          "symmetry": true,
+          "authority_ceiling": "NONE",
+          "allowed_witness_types": [],
+          "source_refs": [
+            "drive:CANONICAL_ONTOLOGY_ANTI_COLLAPSE_REGISTRY_v0.1"
+          ]
+        },
+        {
+          "rule_id": "NC-005",
+          "left_type": "IMPLEMENTATION_PASS",
+          "right_type": "FORMAL_PROOF",
+          "disposition": "FORBID",
+          "rationale": "Implementation success is not theorem proof",
+          "symmetry": true,
+          "authority_ceiling": "NONE",
+          "allowed_witness_types": [],
+          "source_refs": [
+            "drive:CANONICAL_ONTOLOGY_ANTI_COLLAPSE_REGISTRY_v0.1"
+          ]
+        },
+        {
+          "rule_id": "NC-006",
+          "left_type": "FORMAL_PROOF",
+          "right_type": "EMPIRICAL_CONFIRMATION",
+          "disposition": "FORBID",
+          "rationale": "Formal proof is not empirical confirmation",
+          "symmetry": true,
+          "authority_ceiling": "NONE",
+          "allowed_witness_types": [],
+          "source_refs": [
+            "drive:CANONICAL_ONTOLOGY_ANTI_COLLAPSE_REGISTRY_v0.1"
+          ]
+        },
+        {
+          "rule_id": "NC-007",
+          "left_type": "CITATION",
+          "right_type": "PROOF",
+          "disposition": "FORBID",
+          "rationale": "Citation does not itself prove the cited claim",
+          "symmetry": true,
+          "authority_ceiling": "NONE",
+          "allowed_witness_types": [],
+          "source_refs": [
+            "drive:CANONICAL_ONTOLOGY_ANTI_COLLAPSE_REGISTRY_v0.1"
+          ]
+        },
+        {
+          "rule_id": "NC-008",
+          "left_type": "HOST_CAPABILITY",
+          "right_type": "EXECUTION_AUTHORITY",
+          "disposition": "FORBID",
+          "rationale": "Observed capability does not grant execution authority",
+          "symmetry": true,
+          "authority_ceiling": "NONE",
+          "allowed_witness_types": [],
+          "source_refs": [
+            "drive:CANONICAL_ONTOLOGY_ANTI_COLLAPSE_REGISTRY_v0.1"
+          ]
+        },
+        {
+          "rule_id": "NC-009",
+          "left_type": "PROVIDER_REFUSAL",
+          "right_type": "SCIENTIFIC_REFUTATION",
+          "disposition": "FORBID",
+          "rationale": "Provider refusal is an environmental constraint, not a scientific result",
+          "symmetry": true,
+          "authority_ceiling": "NONE",
+          "allowed_witness_types": [],
+          "source_refs": [
+            "drive:CANONICAL_ONTOLOGY_ANTI_COLLAPSE_REGISTRY_v0.1"
+          ]
+        },
+        {
+          "rule_id": "NC-010",
+          "left_type": "CHAT_MEMORY",
+          "right_type": "CANONICAL_MEMORY",
+          "disposition": "FORBID",
+          "rationale": "Conversational memory is not canonical continuity",
+          "symmetry": true,
+          "authority_ceiling": "NONE",
+          "allowed_witness_types": [],
+          "source_refs": [
+            "drive:CANONICAL_ONTOLOGY_ANTI_COLLAPSE_REGISTRY_v0.1"
+          ]
+        },
+        {
+          "rule_id": "NC-011",
+          "left_type": "SAME_LABEL",
+          "right_type": "SAME_LINEAGE",
+          "disposition": "WITNESS_REQUIRED",
+          "rationale": "Same label does not establish same lineage",
+          "symmetry": true,
+          "authority_ceiling": "NONE",
+          "allowed_witness_types": [
+            "LINEAGE_EQUIVALENCE_WITNESS",
+            "CANON_ADMISSION_RECEIPT"
+          ],
+          "source_refs": [
+            "drive:CANONICAL_ONTOLOGY_ANTI_COLLAPSE_REGISTRY_v0.1"
+          ]
+        },
+        {
+          "rule_id": "NC-012",
+          "left_type": "IMPORTED_STATE",
+          "right_type": "ACTIVE_STATE",
+          "disposition": "WITNESS_REQUIRED",
+          "rationale": "Imported state needs explicit admission/supersession witness",
+          "symmetry": true,
+          "authority_ceiling": "CANONICAL",
+          "allowed_witness_types": [
+            "LINEAGE_EQUIVALENCE_WITNESS",
+            "CANON_ADMISSION_RECEIPT"
+          ],
+          "source_refs": [
+            "drive:CANONICAL_ONTOLOGY_ANTI_COLLAPSE_REGISTRY_v0.1"
+          ]
+        }
+      ]
+    }
+  },
+  "invariants": [
+    "CLAIM != EVIDENCE",
+    "EXECUTABLE_SOURCE != EXECUTION_RECEIPT",
+    "SKILL != HOST_CAPABILITY",
+    "HOST_CAPABILITY != EXECUTION_AUTHORITY",
+    "KNOWLEDGE_INGEST != AUTHORITY_PROMOTION",
+    "MODEL != REALITY",
+    "PLATFORM != CONSTITUTIONAL_AUTHORITY",
+    "OMNIUS != HIGHESTONE",
+    "PROVIDER_REFUSAL != SCIENTIFIC_REFUTATION",
+    "CHAT_MEMORY != CANONICAL_MEMORY"
+  ],
+  "non_claim": "Finite schema/validator implementation only. Does not prove T-ΩG theorem targets, close parent Chat runtime regression, or promote scientific authority."
+}
