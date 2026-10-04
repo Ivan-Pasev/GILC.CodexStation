@@ -1,0 +1,18 @@
+{
+  "schema": "GILC/CODEXSTATION/OMEGA-NEXT/DISTRIBUTION-COMPILER-SLICE-01/0.1",
+  "version": "0.1",
+  "canonical_drive_root": "drive:1PgsUYHh_MgiXMC8O-sXZgJ9oEvglI1vd",
+  "parent_branch": "omega-g-machine-contract-01",
+  "branch": "omega-next-distribution-compiler-01",
+  "bundle": "contracts/omega_next/DISTRIBUTION_COMPILER_SLICE_01.bundle.json",
+  "compiler": "src/gilc_codex_station/omega_next/compiler.py",
+  "tests": "tests/test_omega_next_distribution_compiler_slice_01.py",
+  "compiled_profiles": [
+    "contracts/omega_next/compiled/google_gemini_notebook.profile.json",
+    "contracts/omega_next/compiled/openai_chatgpt_codex.profile.json"
+  ],
+  "conformance_receipts": "contracts/omega_next/distribution-conformance.receipts.json",
+  "root_semantic_fingerprint": "074218146dbea2821277e98b90c89bd405bc2f882443fe03cd477337f5100863",
+  "authority": "WORKING_IMPLEMENTATION_EVIDENCE",
+  "non_claim": "Finite distribution compiler implementation only; no live host capability, runtime deployment, theorem proof, scientific validation or release promotion."
+}
