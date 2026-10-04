@@ -1,0 +1,753 @@
+{
+  "schema": "GILC/CODEXSTATION/OMEGA-NEXT/GOOGLE-NOTEBOOK-BOOT-BUNDLE/0.1",
+  "version": "0.1",
+  "authority": "WORKING_IMPLEMENTATION_SPEC",
+  "schemas": {
+    "GoogleCapabilityObservation.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/GoogleCapabilityObservation.schema.json",
+      "title": "GoogleCapabilityObservation",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "capability_id",
+        "surface",
+        "state",
+        "evidence_class",
+        "evidence_refs",
+        "observed_at",
+        "claim_boundary"
+      ],
+      "properties": {
+        "capability_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "surface": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "OBSERVED_AVAILABLE",
+            "SOURCE_REPORTED_FEATURE",
+            "UNAVAILABLE_IN_CURRENT_SURFACE",
+            "UNKNOWN",
+            "MANUAL_UI_REQUIRED"
+          ]
+        },
+        "evidence_class": {
+          "type": "string",
+          "enum": [
+            "HOST_CAPABILITY_OBSERVATION",
+            "SOURCE_REPORTED",
+            "ENVIRONMENT_NEGATIVE",
+            "UNKNOWN"
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "observed_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claim_boundary": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "NotebookLiveBootReceipt.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/NotebookLiveBootReceipt.schema.json",
+      "title": "NotebookLiveBootReceipt",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_id",
+        "cell_id",
+        "notebook_name",
+        "status",
+        "root_semantic_fingerprint",
+        "core_sources_attached",
+        "instruction_applied",
+        "canaries",
+        "observed_capabilities",
+        "evidence_refs",
+        "authority_delta"
+      ],
+      "properties": {
+        "receipt_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "cell_id": {
+          "type": "string",
+          "enum": [
+            "NB00",
+            "NB10",
+            "NB20",
+            "NB30",
+            "NB40"
+          ]
+        },
+        "notebook_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "BOOT_PREPARED",
+            "LIVE_BOOT_PASS",
+            "LIVE_BOOT_PASS_WITH_LIMITATIONS",
+            "BOOT_BLOCKED"
+          ]
+        },
+        "root_semantic_fingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "core_sources_attached": {
+          "type": "boolean"
+        },
+        "instruction_applied": {
+          "type": "boolean"
+        },
+        "canaries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "canary_id",
+              "critical",
+              "status"
+            ],
+            "properties": {
+              "canary_id": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9_.:/-]+$"
+              },
+              "critical": {
+                "type": "boolean"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "PASS",
+                  "FAIL",
+                  "NOT_RUN",
+                  "BLOCKED"
+                ]
+              },
+              "detail": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "observed_capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "authority_delta": {
+          "type": "string",
+          "const": "NONE"
+        },
+        "observed_source_limit": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "GoogleNotebookBootManifest.schema.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/GoogleNotebookBootManifest.schema.json",
+      "title": "GoogleNotebookBootManifest",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "version",
+        "root_id",
+        "root_semantic_fingerprint",
+        "boot_sources",
+        "cells",
+        "capability_observations",
+        "sync_canary",
+        "next_gate"
+      ],
+      "properties": {
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "root_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:/-]+$"
+        },
+        "root_semantic_fingerprint": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "boot_sources": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "slot",
+              "title",
+              "drive_id",
+              "required"
+            ],
+            "properties": {
+              "slot": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 6
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "drive_id": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9_.:/-]+$"
+              },
+              "required": {
+                "type": "boolean",
+                "const": true
+              }
+            }
+          }
+        },
+        "cells": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "cell_id",
+              "canonical_name",
+              "initialization_order",
+              "status",
+              "critical_canaries",
+              "specialist_source_classes"
+            ],
+            "properties": {
+              "cell_id": {
+                "type": "string",
+                "enum": [
+                  "NB00",
+                  "NB10",
+                  "NB20",
+                  "NB30",
+                  "NB40"
+                ]
+              },
+              "canonical_name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "initialization_order": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 5
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "BOOT_PREPARED",
+                  "WAITING_NB00",
+                  "LIVE_BOOT_PASS",
+                  "LIVE_BOOT_PASS_WITH_LIMITATIONS",
+                  "BOOT_BLOCKED"
+                ]
+              },
+              "critical_canaries": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^[A-Za-z0-9_.:/-]+$"
+                },
+                "uniqueItems": true,
+                "minItems": 1
+              },
+              "specialist_source_classes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              }
+            }
+          }
+        },
+        "capability_observations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "$id": "https://g-i-l-c.com/schemas/codexstation/omega-next/GoogleCapabilityObservation.schema.json",
+            "title": "GoogleCapabilityObservation",
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "capability_id",
+              "surface",
+              "state",
+              "evidence_class",
+              "evidence_refs",
+              "observed_at",
+              "claim_boundary"
+            ],
+            "properties": {
+              "capability_id": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9_.:/-]+$"
+              },
+              "surface": {
+                "type": "string",
+                "minLength": 1
+              },
+              "state": {
+                "type": "string",
+                "enum": [
+                  "OBSERVED_AVAILABLE",
+                  "SOURCE_REPORTED_FEATURE",
+                  "UNAVAILABLE_IN_CURRENT_SURFACE",
+                  "UNKNOWN",
+                  "MANUAL_UI_REQUIRED"
+                ]
+              },
+              "evidence_class": {
+                "type": "string",
+                "enum": [
+                  "HOST_CAPABILITY_OBSERVATION",
+                  "SOURCE_REPORTED",
+                  "ENVIRONMENT_NEGATIVE",
+                  "UNKNOWN"
+                ]
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "uniqueItems": true
+              },
+              "observed_at": {
+                "type": "string",
+                "minLength": 1
+              },
+              "claim_boundary": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "sync_canary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "canary_id",
+            "current_value",
+            "source_drive_id"
+          ],
+          "properties": {
+            "canary_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:/-]+$"
+            },
+            "current_value": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_drive_id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:/-]+$"
+            }
+          }
+        },
+        "next_gate": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  },
+  "boot_manifest": {
+    "schema": "GILC/CODEXSTATION/OMEGA-NEXT/GOOGLE-NOTEBOOK-BOOT/0.1",
+    "version": "0.1",
+    "root_id": "drive:1PgsUYHh_MgiXMC8O-sXZgJ9oEvglI1vd",
+    "root_semantic_fingerprint": "074218146dbea2821277e98b90c89bd405bc2f882443fe03cd477337f5100863",
+    "boot_sources": [
+      {
+        "slot": 1,
+        "title": "00_START_CONTINUE_HERE — CODEXSTATION Ω NEXT",
+        "drive_id": "drive:10StCOe3wA2585NP2BgKAVDKPMZJRvA_Rtt4z6Dizytk",
+        "required": true
+      },
+      {
+        "slot": 2,
+        "title": "01_SOLUTION_ENGINEERING_DESIGN_SPEC — CODEXSTATION Ω NEXT",
+        "drive_id": "drive:1neCuIi6iJbsOUFRXMlLPEj47nf4W-Y28YCwSGmNpRIE",
+        "required": true
+      },
+      {
+        "slot": 3,
+        "title": "AGENTS.md",
+        "drive_id": "drive:1Yq8b3kBSjDSSWvQgXPGh9lUQWWRAUfCXnQBYxM-CuvA",
+        "required": true
+      },
+      {
+        "slot": 4,
+        "title": "03_STATE_HANDOFF_AND_DISTRIBUTION_MANIFEST — CODEXSTATION Ω NEXT",
+        "drive_id": "drive:15LoXoVsHkRWtwg2MyHwiNzf8rsD-XOiElWzi9YUrzNI",
+        "required": true
+      },
+      {
+        "slot": 5,
+        "title": "GOOGLE_NOTEBOOK_BOOTSTRAP_PACK — Ω NEXT — v0.1",
+        "drive_id": "drive:14N4eyqgYIfCsWYQH2fyjAZugx6OYmjNoORZccynZaRk",
+        "required": true
+      },
+      {
+        "slot": 6,
+        "title": "GOOGLE_NOTEBOOK_CONTEXT_AND_BRIDGE_REGISTRY — Ω NEXT — v0.1",
+        "drive_id": "drive:14C5PY0VXcIYu34kwXdP9QKFoPpMwkDiSQ1VvAHkNS4I",
+        "required": true
+      }
+    ],
+    "cells": [
+      {
+        "cell_id": "NB00",
+        "canonical_name": "CODEXSTATION Ω NEXT — NB00 — ORCHESTRATOR CONTROL TOWER",
+        "initialization_order": 1,
+        "status": "BOOT_PREPARED",
+        "critical_canaries": [
+          "T1_ROOT_RETRIEVAL",
+          "T2_LINEAGE_NON_COLLAPSE",
+          "T3_HIGHESTONE_AUTHORITY",
+          "T4_HOST_CAPABILITY",
+          "T5_NOTEBOOK_CANON"
+        ],
+        "specialist_source_classes": [
+          "ACTIVE_HANDOFF",
+          "MACHINE_MANIFEST",
+          "DISTRIBUTION_PROFILE",
+          "EVIDENCE_RECEIPT"
+        ]
+      },
+      {
+        "cell_id": "NB10",
+        "canonical_name": "CODEXSTATION Ω NEXT — NB10 — FRONTIER SCIENCE + MATHEMATICS",
+        "initialization_order": 2,
+        "status": "WAITING_NB00",
+        "critical_canaries": [
+          "SCIENCE_CLASS_NON_COLLAPSE",
+          "BRIDGE_AUTHORITY_PRESERVATION"
+        ],
+        "specialist_source_classes": [
+          "THEORY_CANON",
+          "PRIMARY_LITERATURE",
+          "DATA",
+          "PROTOCOLS",
+          "FORMAL_ARTIFACTS"
+        ]
+      },
+      {
+        "cell_id": "NB40",
+        "canonical_name": "CODEXSTATION Ω NEXT — NB40 — CODING + SYSTEMS ENGINEERING",
+        "initialization_order": 3,
+        "status": "WAITING_NB00",
+        "critical_canaries": [
+          "IMPLEMENTATION_EVIDENCE_BOUNDARY",
+          "RUNTIME_GATE"
+        ],
+        "specialist_source_classes": [
+          "REPOSITORY",
+          "REPO_INSTRUCTIONS",
+          "API_DOCS",
+          "TESTS",
+          "CI",
+          "ENGINEERING_HANDOFF"
+        ]
+      },
+      {
+        "cell_id": "NB20",
+        "canonical_name": "CODEXSTATION Ω NEXT — NB20 — FRONTIER TECHNOLOGY + ENGINEERING",
+        "initialization_order": 4,
+        "status": "WAITING_NB00",
+        "critical_canaries": [
+          "SIMULATION_PHYSICAL_TEST_BOUNDARY",
+          "ENGINEERING_STATUS"
+        ],
+        "specialist_source_classes": [
+          "REQUIREMENTS",
+          "STANDARDS",
+          "DATASHEETS",
+          "DESIGN_FILES",
+          "SAFETY_EVIDENCE"
+        ]
+      },
+      {
+        "cell_id": "NB30",
+        "canonical_name": "CODEXSTATION Ω NEXT — NB30 — PROFESSIONAL SYNTHESIS + COPY",
+        "initialization_order": 5,
+        "status": "WAITING_NB00",
+        "critical_canaries": [
+          "COPY_CLAIM_CEILING",
+          "SOURCE_PRESERVATION"
+        ],
+        "specialist_source_classes": [
+          "APPROVED_SOURCE_PACK",
+          "CLAIM_LEDGER",
+          "STYLE_PROFILE",
+          "APPROVED_ARTIFACTS"
+        ]
+      }
+    ],
+    "capability_observations": [
+      {
+        "capability_id": "google.drive.read_write",
+        "surface": "ChatGPT Google Drive connector",
+        "state": "OBSERVED_AVAILABLE",
+        "evidence_class": "HOST_CAPABILITY_OBSERVATION",
+        "evidence_refs": [
+          "connector:google-drive:read-write"
+        ],
+        "observed_at": "2026-10-04",
+        "claim_boundary": "Drive/Docs operations exposed by current connector only."
+      },
+      {
+        "capability_id": "gemini.notebook.create.via_chatgpt",
+        "surface": "Current ChatGPT plugin/tool surface",
+        "state": "UNAVAILABLE_IN_CURRENT_SURFACE",
+        "evidence_class": "ENVIRONMENT_NEGATIVE",
+        "evidence_refs": [
+          "plugin-search:NotebookLM-Google-Notebook:no-dedicated-connector",
+          "tool-surface:google-drive:no-notebook-create-action"
+        ],
+        "observed_at": "2026-10-04",
+        "claim_boundary": "Does not imply the user's Google account lacks Gemini Notebook."
+      },
+      {
+        "capability_id": "gemini.notebook.source_attach.via_chatgpt",
+        "surface": "Current ChatGPT plugin/tool surface",
+        "state": "UNAVAILABLE_IN_CURRENT_SURFACE",
+        "evidence_class": "ENVIRONMENT_NEGATIVE",
+        "evidence_refs": [
+          "tool-surface:google-drive:no-notebook-source-attach-action"
+        ],
+        "observed_at": "2026-10-04",
+        "claim_boundary": "Manual Google UI may provide source attachment."
+      },
+      {
+        "capability_id": "gemini.notebook.drive.auto_sync",
+        "surface": "Google Gemini Notebook",
+        "state": "SOURCE_REPORTED_FEATURE",
+        "evidence_class": "SOURCE_REPORTED",
+        "evidence_refs": [
+          "google-help:gemininotebook:16215270"
+        ],
+        "observed_at": "2026-10-04",
+        "claim_boundary": "Official product documentation; not yet live-tested on the user's notebook."
+      },
+      {
+        "capability_id": "gemini.notebook.source_limit",
+        "surface": "User Google account",
+        "state": "UNKNOWN",
+        "evidence_class": "UNKNOWN",
+        "evidence_refs": [
+          "google-help:gemini:16972047",
+          "google-help:gemininotebook:limits"
+        ],
+        "observed_at": "2026-10-04",
+        "claim_boundary": "Plan-dependent; must be recorded from the active account/UI."
+      }
+    ],
+    "sync_canary": {
+      "canary_id": "CS-OMEGA-N-GSYNC-001",
+      "current_value": "BOOTSTRAP-v0.1-INITIAL",
+      "source_drive_id": "drive:14N4eyqgYIfCsWYQH2fyjAZugx6OYmjNoORZccynZaRk"
+    },
+    "next_gate": "CREATE_NB00_LIVE_NOTEBOOK_AND_RUN_CONFORMANCE"
+  },
+  "context_capsules": [
+    {
+      "capsule_id": "ctx:omega-next:root-control:v0.1",
+      "lineage_id": "codexstation.omega.next",
+      "title": "CodexStation Ω NEXT Root Control Capsule",
+      "purpose": "minimal high-density root-state capsule for notebook routing and recovery",
+      "scope": "Ω NEXT shared canon and distribution state",
+      "authority_ceiling": "CANONICAL",
+      "definitions": [
+        "canonical root = provider-independent Drive R&D working tree",
+        "distribution profile = host-specific compiled view that cannot redefine shared semantics"
+      ],
+      "current_state": [
+        "root genesis structural pass",
+        "distribution compiler repository-CI pass",
+        "Google Notebook bootstrap pack prepared",
+        "live notebook objects not yet recorded"
+      ],
+      "invariants": [
+        "PLATFORM_PROFILE != CANON_FORK",
+        "SOURCE != AUTHORITY",
+        "SKILL != HOST_CAPABILITY",
+        "BRIDGE_TRANSPORT != AUTHORITY_PROMOTION"
+      ],
+      "claims": [
+        {
+          "claim": "Ω NEXT is the active provider-independent R&D root for this new architecture line.",
+          "evidence_class": "CANONICAL_STATE",
+          "status": "ACTIVE_WORKING",
+          "source_refs": [
+            "drive:10StCOe3wA2585NP2BgKAVDKPMZJRvA_Rtt4z6Dizytk",
+            "drive:15LoXoVsHkRWtwg2MyHwiNzf8rsD-XOiElWzi9YUrzNI"
+          ]
+        },
+        {
+          "claim": "Live Gemini Notebook objects are not yet evidenced in canonical state.",
+          "evidence_class": "HOST_CAPABILITY_OBSERVATION",
+          "status": "OPEN",
+          "source_refs": [
+            "drive:14N4eyqgYIfCsWYQH2fyjAZugx6OYmjNoORZccynZaRk"
+          ]
+        }
+      ],
+      "open_gates": [
+        "CREATE_NB00_LIVE_NOTEBOOK",
+        "NB00_CONSTITUTIONAL_CANARY",
+        "NB00_DRIVE_SYNC_CANARY"
+      ],
+      "negative_results": [
+        "No direct notebook-create action is available in current ChatGPT tool surface."
+      ],
+      "source_refs": [
+        "drive:10StCOe3wA2585NP2BgKAVDKPMZJRvA_Rtt4z6Dizytk",
+        "drive:15LoXoVsHkRWtwg2MyHwiNzf8rsD-XOiElWzi9YUrzNI",
+        "drive:14N4eyqgYIfCsWYQH2fyjAZugx6OYmjNoORZccynZaRk"
+      ],
+      "freshness": "FRESH"
+    }
+  ],
+  "bridge_canaries": [
+    {
+      "bridge_id": "bridge:canary:nb10-nb00:001",
+      "source_cell": "NB10",
+      "target_cell": "NB00",
+      "mission_id": "mission:canary:science-authority-preservation",
+      "lineage_id": "codexstation.omega.next",
+      "claims": [
+        {
+          "claim": "A model-derived result may be scientifically interesting while remaining unverified empirically.",
+          "evidence_class": "MODEL_DERIVED",
+          "source_authority_ceiling": "METHOD",
+          "target_authority_ceiling": "METHOD",
+          "source_refs": [
+            "drive:1neCuIi6iJbsOUFRXMlLPEj47nf4W-Y28YCwSGmNpRIE"
+          ]
+        }
+      ],
+      "uncertainties": [
+        "no empirical measurement attached"
+      ],
+      "open_obligations": [
+        "define measurable prediction",
+        "design falsification test"
+      ],
+      "artifacts": [],
+      "recommended_delta": "route verification mission; no empirical/formal promotion",
+      "source_refs": [
+        "drive:1neCuIi6iJbsOUFRXMlLPEj47nf4W-Y28YCwSGmNpRIE"
+      ]
+    },
+    {
+      "bridge_id": "bridge:canary:nb40-nb00:001",
+      "source_cell": "NB40",
+      "target_cell": "NB00",
+      "mission_id": "mission:canary:implementation-authority-preservation",
+      "lineage_id": "codexstation.omega.next",
+      "claims": [
+        {
+          "claim": "A repository branch passed CI.",
+          "evidence_class": "CI_EXECUTION",
+          "source_authority_ceiling": "EXECUTION",
+          "target_authority_ceiling": "EXECUTION",
+          "source_refs": [
+            "drive:1HTmmER1Qvc6f46d3O3geb1g8yIhZ0Ys8yoUJYFfXNnY"
+          ]
+        }
+      ],
+      "uncertainties": [
+        "no target-runtime deployment receipt attached"
+      ],
+      "open_obligations": [
+        "target runtime test",
+        "deployment receipt where applicable"
+      ],
+      "artifacts": [
+        "github:branch:omega-next-distribution-compiler-01"
+      ],
+      "recommended_delta": "record implementation evidence only",
+      "source_refs": [
+        "drive:1HTmmER1Qvc6f46d3O3geb1g8yIhZ0Ys8yoUJYFfXNnY"
+      ]
+    }
+  ],
+  "non_claim": "Boot preparation and capability-state contracts only. Does not create live Gemini Notebook objects, establish live notebook conformance, or promote scientific/formal/release authority."
+}

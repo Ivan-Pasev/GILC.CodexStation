@@ -1,0 +1,58 @@
+{
+  "schema": "GILC/CODEXSTATION/OMEGA-NEXT/DISTRIBUTION-PROFILE/0.1",
+  "profile_id": "omega-next.openai-chatgpt-codex",
+  "provider": "OPENAI",
+  "version": "0.1",
+  "root_id": "drive:1PgsUYHh_MgiXMC8O-sXZgJ9oEvglI1vd",
+  "root_semantic_fingerprint": "074218146dbea2821277e98b90c89bd405bc2f882443fe03cd477337f5100863",
+  "inherited_invariants": [
+    "PLATFORM_PROFILE != CANON_FORK",
+    "COMPILED_VIEW != SEMANTIC_MUTATION",
+    "HOST != STATION",
+    "MODEL_SERVICE != COGNITIVE_ENTITY",
+    "MODEL != REALITY",
+    "SOURCE != AUTHORITY",
+    "CLAIM != EVIDENCE",
+    "SKILL != HOST_CAPABILITY",
+    "HOST_CAPABILITY != EXECUTION_AUTHORITY",
+    "AVAILABLE != AUTHORIZED",
+    "KNOWLEDGE_INGEST != AUTHORITY_PROMOTION",
+    "FORMAL_PROOF != EMPIRICAL_CONFIRMATION",
+    "IMPLEMENTATION_PASS != SCIENTIFIC_PASS",
+    "SAME_LABEL != SAME_LINEAGE",
+    "LATEST_TIMESTAMP != AUTOMATIC_AUTHORITY",
+    "HIGHESTONE != OMNIUS",
+    "OMNIUS != CODEXSTATION",
+    "CHAT_MEMORY != CANONICAL_MEMORY"
+  ],
+  "control_documents": [
+    "drive:10StCOe3wA2585NP2BgKAVDKPMZJRvA_Rtt4z6Dizytk",
+    "drive:1neCuIi6iJbsOUFRXMlLPEj47nf4W-Y28YCwSGmNpRIE",
+    "drive:1Yq8b3kBSjDSSWvQgXPGh9lUQWWRAUfCXnQBYxM-CuvA",
+    "drive:15LoXoVsHkRWtwg2MyHwiNzf8rsD-XOiElWzi9YUrzNI"
+  ],
+  "surfaces": [
+    "ChatGPT CodexStation plugin/connector distribution",
+    "ChatGPT connected application surfaces when observed",
+    "Codex repository engineering",
+    "GitHub CI/evidence",
+    "OpenAI work/computer-use surfaces only when observed"
+  ],
+  "limitations": [
+    "PARENT_CHATGPT_PLUGIN_RUNTIME_REGRESSION_DEBT_REMAINS_OPEN",
+    "HOST_CAPABILITIES_REQUIRE_RUNTIME_OBSERVATION",
+    "CHAT_HISTORY_IS_NOT_CANONICAL_MEMORY",
+    "PLUGIN_SKILL_DOES_NOT_IMPLY_EXECUTABLE_HOST_TOOL"
+  ],
+  "host_adapters": [
+    "chatgpt-plugin",
+    "chatgpt-connectors",
+    "codex-repository",
+    "github-ci"
+  ],
+  "compiled_views": [
+    "CHATGPT_PLUGIN_DISTRIBUTION",
+    "CODEX_WORK_ENGINEERING"
+  ],
+  "semantic_overrides": []
+}

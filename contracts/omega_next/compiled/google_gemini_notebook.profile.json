@@ -1,0 +1,61 @@
+{
+  "schema": "GILC/CODEXSTATION/OMEGA-NEXT/DISTRIBUTION-PROFILE/0.1",
+  "profile_id": "omega-next.google-gemini-notebook",
+  "provider": "GOOGLE",
+  "version": "0.1",
+  "root_id": "drive:1PgsUYHh_MgiXMC8O-sXZgJ9oEvglI1vd",
+  "root_semantic_fingerprint": "074218146dbea2821277e98b90c89bd405bc2f882443fe03cd477337f5100863",
+  "inherited_invariants": [
+    "PLATFORM_PROFILE != CANON_FORK",
+    "COMPILED_VIEW != SEMANTIC_MUTATION",
+    "HOST != STATION",
+    "MODEL_SERVICE != COGNITIVE_ENTITY",
+    "MODEL != REALITY",
+    "SOURCE != AUTHORITY",
+    "CLAIM != EVIDENCE",
+    "SKILL != HOST_CAPABILITY",
+    "HOST_CAPABILITY != EXECUTION_AUTHORITY",
+    "AVAILABLE != AUTHORIZED",
+    "KNOWLEDGE_INGEST != AUTHORITY_PROMOTION",
+    "FORMAL_PROOF != EMPIRICAL_CONFIRMATION",
+    "IMPLEMENTATION_PASS != SCIENTIFIC_PASS",
+    "SAME_LABEL != SAME_LINEAGE",
+    "LATEST_TIMESTAMP != AUTOMATIC_AUTHORITY",
+    "HIGHESTONE != OMNIUS",
+    "OMNIUS != CODEXSTATION",
+    "CHAT_MEMORY != CANONICAL_MEMORY"
+  ],
+  "control_documents": [
+    "drive:10StCOe3wA2585NP2BgKAVDKPMZJRvA_Rtt4z6Dizytk",
+    "drive:1neCuIi6iJbsOUFRXMlLPEj47nf4W-Y28YCwSGmNpRIE",
+    "drive:1Yq8b3kBSjDSSWvQgXPGh9lUQWWRAUfCXnQBYxM-CuvA",
+    "drive:15LoXoVsHkRWtwg2MyHwiNzf8rsD-XOiElWzi9YUrzNI"
+  ],
+  "surfaces": [
+    "Google Drive canonical source synchronization",
+    "Gemini Notebook bounded semantic/research cells",
+    "Google Search/Research discovery",
+    "Gemini reasoning surfaces",
+    "Google execution/agent surfaces only when observed"
+  ],
+  "limitations": [
+    "LIVE_GEMINI_NOTEBOOK_OBJECTS_NOT_CREATED_BY_CURRENT_DRIVE_CONNECTOR",
+    "HOST_CAPABILITIES_REQUIRE_RUNTIME_OBSERVATION",
+    "NOTEBOOK_INTERNAL_STATE_IS_NOT_CANONICAL_MEMORY",
+    "CROSS_NOTEBOOK_TRANSFER_REQUIRES_VISIBLE_DRIVE_SOURCE_OR_BRIDGE_CAPSULE"
+  ],
+  "host_adapters": [
+    "google-drive",
+    "gemini-notebook",
+    "google-search-research",
+    "gemini-reasoning"
+  ],
+  "compiled_views": [
+    "NB00_ORCHESTRATOR_CONTROL_TOWER",
+    "NB10_FRONTIER_SCIENCE_MATH",
+    "NB20_FRONTIER_TECH_ENGINEERING",
+    "NB30_PROFESSIONAL_SYNTHESIS_COPY",
+    "NB40_CODING_SYSTEMS_ENGINEERING"
+  ],
+  "semantic_overrides": []
+}
