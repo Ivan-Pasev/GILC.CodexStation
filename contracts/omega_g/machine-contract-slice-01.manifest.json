@@ -1,0 +1,37 @@
+{
+  "schema": "GILC/CODEXSTATION/OMEGA-G/MACHINE-CONTRACT-SLICE-01/0.1",
+  "branch_version": "v0.4.0-alpha.0",
+  "authority": "WORKING_IMPLEMENTATION_EVIDENCE",
+  "bundle": "contracts/omega_g/MACHINE_CONTRACT_SLICE_01.bundle.json",
+  "schema_names": [
+    "CanonicalOntologyRecord.schema.json",
+    "NonCollapseRule.schema.json",
+    "FrontierSnapshot.schema.json",
+    "HighestOneSelection.schema.json",
+    "OmniusMissionContract.schema.json",
+    "HostCapabilityDescriptor.schema.json",
+    "ClaimAuthorityReceipt.schema.json",
+    "ExecutionReceipt.schema.json",
+    "MigrationWitness.schema.json",
+    "CanonAdmissionReceipt.schema.json"
+  ],
+  "registry_names": [
+    "CanonicalOntologyRegistry.v0.1",
+    "NonCollapseRules.v0.1"
+  ],
+  "validator": "src/gilc_codex_station/omega_g/validator.py",
+  "tests": "tests/test_omega_g_machine_contract_slice_01.py",
+  "invariants": [
+    "CLAIM != EVIDENCE",
+    "EXECUTABLE_SOURCE != EXECUTION_RECEIPT",
+    "SKILL != HOST_CAPABILITY",
+    "HOST_CAPABILITY != EXECUTION_AUTHORITY",
+    "KNOWLEDGE_INGEST != AUTHORITY_PROMOTION",
+    "MODEL != REALITY",
+    "PLATFORM != CONSTITUTIONAL_AUTHORITY",
+    "OMNIUS != HIGHESTONE",
+    "PROVIDER_REFUSAL != SCIENTIFIC_REFUTATION",
+    "CHAT_MEMORY != CANONICAL_MEMORY"
+  ],
+  "non_claim": "Finite schema/validator implementation only. Does not prove T-ΩG theorem targets, close parent Chat runtime regression, or promote scientific authority."
+}

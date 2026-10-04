@@ -1,0 +1,107 @@
+{
+  "schema": "GILC/CODEXSTATION/OMEGA-NEXT/DISTRIBUTION-CONFORMANCE-RECEIPTS/0.1",
+  "authority": "WORKING_IMPLEMENTATION_EVIDENCE",
+  "receipts": [
+    {
+      "receipt_id": "conformance:omega-next.google-gemini-notebook",
+      "profile_id": "omega-next.google-gemini-notebook",
+      "root_id": "drive:1PgsUYHh_MgiXMC8O-sXZgJ9oEvglI1vd",
+      "root_semantic_fingerprint": "074218146dbea2821277e98b90c89bd405bc2f882443fe03cd477337f5100863",
+      "decision": "PASS",
+      "checks": [
+        {
+          "check": "ROOT_BINDING",
+          "status": "PASS",
+          "detail": "profile root equals canonical root"
+        },
+        {
+          "check": "SEMANTIC_FINGERPRINT",
+          "status": "PASS",
+          "detail": "compiled view binds exact shared semantic fingerprint"
+        },
+        {
+          "check": "INVARIANT_INHERITANCE",
+          "status": "PASS",
+          "detail": "protected invariants inherited unchanged and ordered"
+        },
+        {
+          "check": "CONTROL_PACK",
+          "status": "PASS",
+          "detail": "four-source control pack inherited exactly"
+        },
+        {
+          "check": "NO_SEMANTIC_OVERRIDES",
+          "status": "PASS",
+          "detail": "no host profile semantic override"
+        },
+        {
+          "check": "LIMITATIONS_EXPLICIT",
+          "status": "PASS",
+          "detail": "provider limitations explicit"
+        }
+      ],
+      "limitations": [
+        "LIVE_GEMINI_NOTEBOOK_OBJECTS_NOT_CREATED_BY_CURRENT_DRIVE_CONNECTOR",
+        "HOST_CAPABILITIES_REQUIRE_RUNTIME_OBSERVATION",
+        "NOTEBOOK_INTERNAL_STATE_IS_NOT_CANONICAL_MEMORY",
+        "CROSS_NOTEBOOK_TRANSFER_REQUIRES_VISIBLE_DRIVE_SOURCE_OR_BRIDGE_CAPSULE"
+      ],
+      "authority_delta": "NONE",
+      "evidence_refs": [
+        "repo:contracts/omega_next/compiled/google_gemini_notebook.profile.json",
+        "repo:tests/test_omega_next_distribution_compiler_slice_01.py"
+      ]
+    },
+    {
+      "receipt_id": "conformance:omega-next.openai-chatgpt-codex",
+      "profile_id": "omega-next.openai-chatgpt-codex",
+      "root_id": "drive:1PgsUYHh_MgiXMC8O-sXZgJ9oEvglI1vd",
+      "root_semantic_fingerprint": "074218146dbea2821277e98b90c89bd405bc2f882443fe03cd477337f5100863",
+      "decision": "PASS",
+      "checks": [
+        {
+          "check": "ROOT_BINDING",
+          "status": "PASS",
+          "detail": "profile root equals canonical root"
+        },
+        {
+          "check": "SEMANTIC_FINGERPRINT",
+          "status": "PASS",
+          "detail": "compiled view binds exact shared semantic fingerprint"
+        },
+        {
+          "check": "INVARIANT_INHERITANCE",
+          "status": "PASS",
+          "detail": "protected invariants inherited unchanged and ordered"
+        },
+        {
+          "check": "CONTROL_PACK",
+          "status": "PASS",
+          "detail": "four-source control pack inherited exactly"
+        },
+        {
+          "check": "NO_SEMANTIC_OVERRIDES",
+          "status": "PASS",
+          "detail": "no host profile semantic override"
+        },
+        {
+          "check": "LIMITATIONS_EXPLICIT",
+          "status": "PASS",
+          "detail": "provider limitations explicit"
+        }
+      ],
+      "limitations": [
+        "PARENT_CHATGPT_PLUGIN_RUNTIME_REGRESSION_DEBT_REMAINS_OPEN",
+        "HOST_CAPABILITIES_REQUIRE_RUNTIME_OBSERVATION",
+        "CHAT_HISTORY_IS_NOT_CANONICAL_MEMORY",
+        "PLUGIN_SKILL_DOES_NOT_IMPLY_EXECUTABLE_HOST_TOOL"
+      ],
+      "authority_delta": "NONE",
+      "evidence_refs": [
+        "repo:contracts/omega_next/compiled/openai_chatgpt_codex.profile.json",
+        "repo:tests/test_omega_next_distribution_compiler_slice_01.py"
+      ]
+    }
+  ],
+  "non_claim": "Static conformance candidate only until repository CI validates this branch. No live Notebook creation, host-capability observation, scientific/formal promotion, deployment, or release is implied."
+}
